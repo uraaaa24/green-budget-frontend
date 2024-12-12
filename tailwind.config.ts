@@ -31,10 +31,10 @@ export default {
           light: '#70706f',
           dark: '#1a1a1a'
         },
-        accent: '#FF6B6B',
-        success: '#28A745',
-        warning: '#FFC107',
-        error: '#DC3545'
+        accent: '#E67E22',
+        success: '#3CB371',
+        warning: '#FFD700',
+        error: '#FF6347'
       }
     }
   },
