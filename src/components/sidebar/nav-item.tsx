@@ -2,13 +2,13 @@ import { cx } from '@/utils'
 import { usePathname } from 'next/navigation'
 import React, { useMemo } from 'react'
 
-type SidebarListItemProps = {
+type SidebarNavItemProps = {
   label: string
   href: string
   icon?: React.ReactNode
 }
 
-const SidebarListItem = ({ label, href, icon }: SidebarListItemProps) => {
+const SidebarNavItem = ({ label, href, icon }: SidebarNavItemProps) => {
   const pathname = usePathname()
 
   const isActive = useMemo(() => pathname === href, [pathname, href])
@@ -18,13 +18,13 @@ const SidebarListItem = ({ label, href, icon }: SidebarListItemProps) => {
       <a
         href={href}
         className={cx(
-          'flex items-center gap-4 p-3 rounded-md transition-all',
+          'flex items-center gap-4 p-3 rounded-md transition-all outline-none border-l-4',
           isActive
-            ? 'bg-primary text-neutral'
-            : 'text-text-light hover:bg-primary-light hover:text-neutral focus:ring-primary'
+            ? 'bg-primary text-neutral-light border-accent'
+            : 'border-transparent text-neutral-dark hover:bg-primary-light focus:ring-2 focus:ring-primary-light'
         )}
       >
-        <span className="flex-shrink-0 w-6 h-6">{icon}</span>
+        <span className="flex-shrink-0 w-6 h-6 transition-opacity">{icon}</span>
         <span className="flex-1 truncate" title={label}>
           {label}
         </span>
@@ -33,4 +33,4 @@ const SidebarListItem = ({ label, href, icon }: SidebarListItemProps) => {
   )
 }
 
-export default SidebarListItem
+export default SidebarNavItem

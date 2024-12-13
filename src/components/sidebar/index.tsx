@@ -1,19 +1,19 @@
 'use client'
 
 import React from 'react'
-import SidebarListItem from './list-item'
+import SidebarNavItem from './nav-item'
 import { NAV_ITEMS } from '@/constants/nav-items'
 
 const SideBar = () => {
   return (
     <aside
-      className="fixed top-10 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+      className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-primary-dark text-neutral-light"
       aria-label="Sidebar"
     >
-      <div className="h-full p-8">
+      <div className="h-full pt-20 p-8">
         <ul className="space-y-4 font-medium">
           {NAV_ITEMS.map((item) => (
-            <SidebarListItem key={item.label} {...item} />
+            <SidebarNavItem key={item.label} {...item} />
           ))}
         </ul>
       </div>

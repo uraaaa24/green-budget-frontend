@@ -29,9 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen bg-neutral text-textColors-primary`}
       >
         <Sidebar />
-        <main className="flex-1 sm:ml-64 rounded-3xl py-8 pr-8 overflow-auto">
-          <div className="container bg-white h-full p-8 rounded-3xl">{children}</div>
-        </main>
+        <main className="flex-1 sm:ml-64 p-8 overflow-auto">{children}</main>
       </body>
     </html>
   )
