@@ -4,7 +4,8 @@ export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/features/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -12,14 +13,14 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: {
-          DEFAULT: '#023a39',
-          light: '#045e54',
-          dark: '#011c1b'
+          DEFAULT: '#247157',
+          light: '#2e8e6b',
+          dark: '#1a5a43'
         },
         secondary: {
-          DEFAULT: '#045e54',
-          light: '#068f80',
-          dark: '#023a39'
+          DEFAULT: '#2e8e6b',
+          light: '#3da780',
+          dark: '#20684e'
         },
         neutral: {
           DEFAULT: '#f3f4f0',
