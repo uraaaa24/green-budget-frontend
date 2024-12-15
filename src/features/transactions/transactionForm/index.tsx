@@ -5,6 +5,7 @@ import DatepickerInput from './components/datepicker-input'
 
 import { useForm, FormProvider } from 'react-hook-form'
 import CategoryInput from './components/category-input'
+import AmountInput from './components/amount-input'
 
 const TransactionForm = () => {
   const methods = useForm()
@@ -25,6 +26,7 @@ const TransactionForm = () => {
           <CategoryInput />
 
           {/* Amount Input */}
+          <AmountInput />
 
           {/* Note Input */}
 

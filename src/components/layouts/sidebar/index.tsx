@@ -2,7 +2,7 @@
 
 import React from 'react'
 import SidebarNavItem from './nav-item'
-import { NAV_ITEMS } from '@/constants/nav-items'
+import { NAV_ITEMS } from '@/components/layouts/sidebar/constants/nav-items'
 
 const SideBar = () => {
   return (

@@ -1,20 +1,16 @@
 'use client'
 
+import FormField from '@/components/elements/form-field'
 import Input from '@/components/elements/input'
-import React, { useRef } from 'react'
+import React from 'react'
 
 const DatepickerInput = () => {
-  const ref = useRef<HTMLInputElement>(null)
-
   const defaultDate = new Date().toISOString().split('T')[0]
 
   return (
-    <div className="flex flex-col space-y-1">
-      <label htmlFor="date" className="text-sm font-medium text-gray-700">
-        Date
-      </label>
-      <Input ref={ref} type="date" id="date" name="date" defaultValue={defaultDate} />
-    </div>
+    <FormField label="Date">
+      <Input type="date" name="date" defaultValue={defaultDate} />
+    </FormField>
   )
 }
 
