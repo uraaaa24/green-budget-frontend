@@ -1,6 +1,6 @@
 'use client'
 
-import Input from '@/components/input'
+import Input from '@/components/elements/input'
 import React, { useRef } from 'react'
 
 const DatepickerInput = () => {

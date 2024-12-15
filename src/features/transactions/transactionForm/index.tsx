@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import DatepickerInput from './datepicker-input'
+import DatepickerInput from './components/datepicker-input'
 
 import { useForm, FormProvider } from 'react-hook-form'
-import CategoryInput from './category-input'
+import CategoryInput from './components/category-input'
 
 const TransactionForm = () => {
   const methods = useForm()
