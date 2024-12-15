@@ -1,12 +1,21 @@
 import FormField from '@/components/elements/form-field'
 import Input from '@/components/elements/input'
 import React from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
 
 const AmountInput = () => {
+  const { control } = useFormContext()
+
   return (
-    <FormField label="Amount">
-      <Input type="number" name="amount" />
-    </FormField>
+    <Controller
+      name="amount"
+      control={control}
+      render={({ field }) => (
+        <FormField label="Amount">
+          <Input type="number" {...field} />
+        </FormField>
+      )}
+    />
   )
 }
 

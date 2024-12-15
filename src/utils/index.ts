@@ -1,3 +1,3 @@
-export const cx = (...classNames: (string | undefined)[]): string => {
+export const cx = (...classNames: (string | boolean | undefined | null)[]): string => {
   return classNames.filter(Boolean).join(' ')
 }

@@ -1,12 +1,14 @@
 import React, { cloneElement, isValidElement, ReactElement, useId } from 'react'
+import { FieldError } from 'react-hook-form'
 
 type FormFieldProps = {
   id?: string
   label: string
   children: ReactElement<{ id?: string }>
+  error?: FieldError
 }
 
-const FormField = ({ id, label, children }: FormFieldProps) => {
+const FormField = ({ id, label, children, error }: FormFieldProps) => {
   const uuId = useId()
   id ??= uuId
 
@@ -18,6 +20,7 @@ const FormField = ({ id, label, children }: FormFieldProps) => {
         {label}
       </label>
       {cloneChildren}
+      {error && <p className="text-sm text-red-500">{error.message}</p>}
     </div>
   )
 }

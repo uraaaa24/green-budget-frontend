@@ -1,6 +1,7 @@
 import FormField from '@/components/elements/form-field'
 import Select from '@/components/elements/select'
 import React from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
 
 const BIG_CATEGORIES = [
   'Food',
@@ -13,10 +14,18 @@ const BIG_CATEGORIES = [
 ]
 
 const CategoryInput = () => {
+  const { control } = useFormContext()
+
   return (
-    <FormField label="Category">
-      <Select name="category" defaultValue="Food" options={BIG_CATEGORIES} />
-    </FormField>
+    <Controller
+      name="category"
+      control={control}
+      render={({ field }) => (
+        <FormField label="Category">
+          <Select {...field} options={BIG_CATEGORIES} />
+        </FormField>
+      )}
+    />
   )
 }
 

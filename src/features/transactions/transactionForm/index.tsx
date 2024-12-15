@@ -7,9 +7,18 @@ import { useForm, FormProvider } from 'react-hook-form'
 import CategoryInput from './components/category-input'
 import AmountInput from './components/amount-input'
 import NoteInput from './components/note-input'
+import SubmitButton from '@/components/elements/button/submit-button'
 
 const TransactionForm = () => {
-  const methods = useForm()
+  // TODO: スキーマを定義してバリデーションを追加する
+  const methods = useForm({
+    defaultValues: {
+      date: new Date().toISOString().split('T')[0],
+      category: 'Food',
+      amount: 0,
+      note: ''
+    }
+  })
 
   const onSubmit = (data: unknown) => {
     console.log(data)
@@ -18,21 +27,17 @@ const TransactionForm = () => {
   return (
     <div className="max-w-lg bg-white p-8 rounded-3xl">
       <h2 className="text-2xl font-bold mb-2">Add Transaction</h2>
-      <p className="text-gray-600 mb-6 text-md">Record your income or expense below.</p>
+      <p className="text-gray-500 mb-6 text-sm">Record your income or expense below.</p>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Date Input */}
-          <DatepickerInput />
-          {/* Category Input */}
-          <CategoryInput />
-
-          {/* Amount Input */}
+          <div className="grid grid-cols-2 gap-4">
+            <DatepickerInput />
+            <CategoryInput />
+          </div>
           <AmountInput />
-
-          {/* Note Input */}
           <NoteInput />
 
-          {/* Submit Button */}
+          <SubmitButton label="Add Transaction" />
         </form>
       </FormProvider>
     </div>

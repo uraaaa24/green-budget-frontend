@@ -3,14 +3,21 @@
 import FormField from '@/components/elements/form-field'
 import Input from '@/components/elements/input'
 import React from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
 
 const DatepickerInput = () => {
-  const defaultDate = new Date().toISOString().split('T')[0]
+  const { control } = useFormContext()
 
   return (
-    <FormField label="Date">
-      <Input type="date" name="date" defaultValue={defaultDate} />
-    </FormField>
+    <Controller
+      name="date"
+      control={control}
+      render={({ field }) => (
+        <FormField label="Date">
+          <Input type="date" {...field} />
+        </FormField>
+      )}
+    />
   )
 }
 
