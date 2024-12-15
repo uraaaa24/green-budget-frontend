@@ -1,4 +1,4 @@
-import FormField from '@/components/elements/form-field'
+import FormField from '@/components/elements/form-control'
 import Select from '@/components/elements/select'
 import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'

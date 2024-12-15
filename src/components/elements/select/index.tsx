@@ -11,7 +11,7 @@ const Select = ({ id, name, defaultValue, options, ...props }: SelectProps) => {
       id={id}
       name={name}
       defaultValue={defaultValue}
-      className="w-full min-h-12 p-3 text-sm bg-neutral border border-gray-300 rounded-md focus:outline-none focus:border-primary-light transition"
+      className="w-full min-h-10 p-2 text-sm bg-neutral border border-gray-300 rounded-md focus:outline-none focus:border-primary-light transition"
     >
       {options.map((option) => (
         <option key={option} value={option}>

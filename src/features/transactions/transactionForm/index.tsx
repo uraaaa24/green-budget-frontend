@@ -25,19 +25,20 @@ const TransactionForm = () => {
   }
 
   return (
-    <div className="max-w-lg bg-white p-8 rounded-3xl">
-      <h2 className="text-2xl font-bold mb-2">Add Transaction</h2>
-      <p className="text-gray-500 mb-6 text-sm">Record your income or expense below.</p>
+    <div className="max-w-lg bg-white p-4 sm:p-6 rounded-3xl border">
+      <h2 className="text-2xl font-bold mb-4 border-b-2 border-gray-200 pb-2">Add Transaction</h2>
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <DatepickerInput />
             <CategoryInput />
           </div>
           <AmountInput />
           <NoteInput />
 
-          <SubmitButton label="Add Transaction" />
+          <div className="pt-4">
+            <SubmitButton label="Add Transaction" className="w-full" />
+          </div>
         </form>
       </FormProvider>
     </div>

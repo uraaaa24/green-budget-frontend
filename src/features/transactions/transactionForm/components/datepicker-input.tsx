@@ -1,6 +1,6 @@
 'use client'
 
-import FormField from '@/components/elements/form-field'
+import FormField from '@/components/elements/form-control'
 import Input from '@/components/elements/input'
 import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
