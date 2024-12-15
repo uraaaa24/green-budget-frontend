@@ -1,29 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
-import Button from '.'
+import SubmitButton from './submit-button'
 
 const meta = {
-  title: 'Common / Elements / Button',
-  component: Button,
+  title: 'Common / Elements / SubmitButton',
+  component: SubmitButton,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs'],
   args: { onClick: fn() }
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof SubmitButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: 'Button'
+    label: 'Add Transaction'
   }
 }
 
-export const disabled: Story = {
+export const Loading: Story = {
   args: {
-    children: 'Button',
-    disabled: true
+    label: 'Add Transaction',
+    isLoading: true
   }
 }

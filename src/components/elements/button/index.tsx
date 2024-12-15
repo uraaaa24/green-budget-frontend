@@ -7,9 +7,9 @@ const Button = ({ disabled, className, ...props }: ButtonProps) => {
   return (
     <button
       {...props}
+      disabled={disabled}
       className={cx(
-        'px-4 py-2 text-sm font-semibold text-white bg-primary rounded-md hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-light',
-        disabled && 'bg-gray-300 text-gray-500 pointer-events-none',
+        'px-4 py-2 text-sm font-semibold text-white bg-primary rounded-md hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-light disabled:bg-gray-300 disabled:text-gray-400 disabled:pointer-events-none',
         className
       )}
     />
