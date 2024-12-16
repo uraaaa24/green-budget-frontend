@@ -1,4 +1,22 @@
-package.json
+# Ignore artifacts
+build
+coverage
+dist
 package-lock.json
 pnpm-lock.yaml
-tsconfig.json
+
+# Dotfiles
+.DS_Store
+*.log
+.env*
+
+# Markdown
+*.md
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/node_modules/
+/build

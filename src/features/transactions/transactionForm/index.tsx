@@ -25,11 +25,11 @@ const TransactionForm = () => {
   }
 
   return (
-    <div className="max-w-lg bg-white p-4 sm:p-6 rounded-3xl border">
-      <h2 className="text-2xl font-bold mb-4 border-b-2 border-gray-200 pb-2">Add Transaction</h2>
+    <div className="max-w-lg rounded-3xl border bg-white p-4 sm:p-6">
+      <h2 className="mb-4 border-b-2 border-gray-200 pb-2 text-2xl font-bold">Add Transaction</h2>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <DatepickerInput />
             <CategoryInput />
           </div>
