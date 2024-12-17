@@ -1,13 +1,14 @@
 'use client'
 
 import React from 'react'
+import AmountInput from './components/amount-input'
 import DatepickerInput from './components/datepicker-input'
-
 import { useForm, FormProvider } from 'react-hook-form'
 import CategoryInput from './components/category-input'
-import AmountInput from './components/amount-input'
 import NoteInput from './components/note-input'
+
 import SubmitButton from '@/components/elements/button/submit-button'
+import Card from '@/components/layouts/box'
 
 const TransactionForm = () => {
   // TODO: スキーマを定義してバリデーションを追加する
@@ -25,8 +26,8 @@ const TransactionForm = () => {
   }
 
   return (
-    <div className="max-w-lg rounded-3xl border bg-white p-4 sm:p-6">
-      <h2 className="mb-4 border-b-2 border-gray-200 pb-2 text-2xl font-bold">Add Transaction</h2>
+    <Card className="max-w-lg">
+      <h2 className="pb-4 text-2xl font-bold">Add Transaction</h2>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -41,7 +42,7 @@ const TransactionForm = () => {
           </div>
         </form>
       </FormProvider>
-    </div>
+    </Card>
   )
 }
 

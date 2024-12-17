@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@tanstack/react-table": "^8.20.6",
     "lucide-react": "^0.468.0",
     "next": "15.1.0",
     "react": "^19.0.0",

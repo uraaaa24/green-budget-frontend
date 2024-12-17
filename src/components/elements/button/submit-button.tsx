@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
 import Button from '.'
-import { cx } from '@/utils'
 import { LoaderCircle } from 'lucide-react'
+import { cx } from '@/libs'
 
 type SubmitButtonProps = ComponentProps<'button'> & {
   label: string
@@ -20,7 +20,7 @@ const SubmitButton = ({ label, isLoading, ...props }: SubmitButtonProps) => {
       <span className={cx(isLoading && 'opacity-70')}>{label}</span>
 
       {isLoading && (
-        <LoaderCircle className="absolute w-5 h-5 animate-spin text-accent" aria-hidden="true" />
+        <LoaderCircle className="absolute h-5 w-5 animate-spin text-accent" aria-hidden="true" />
       )}
     </Button>
   )
