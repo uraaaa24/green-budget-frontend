@@ -5,3 +5,88 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer base {
+  :root {
+    --background: 240 5% 96%; /* 少し明るい背景 */
+    --foreground: 240 10% 3.9%; /* 濃いテキストカラー */
+
+    --card: 0 0% 100%; /* カードは白 */
+    --card-foreground: 240 10% 3.9%; /* カード上のテキスト */
+
+    --popover: 0 0% 100%; /* ポップオーバーの背景 */
+    --popover-foreground: 240 10% 3.9%; /* ポップオーバーのテキスト */
+
+    --primary: 147 48% 30%; /* #247157 の HSL */
+    --primary-foreground: 0 0% 98%; /* 白 */
+
+    --secondary: 147 28% 85%; /* `primary`を薄くした色 */
+    --secondary-foreground: 147 48% 30%; /* `primary`の濃い色 */
+
+    --muted: 147 28% 85%; /* `secondary`と一致 */
+    --muted-foreground: 147 20% 25%; /* muted より少し暗い */
+
+    --accent: 34 100% 55%; /* アクセントカラーをオレンジ系に調整 */
+    --accent-foreground: 0 0% 98%; /* 白 */
+
+    --destructive: 0 84.2% 60.2%; /* 既存のデストラクティブカラー */
+    --destructive-foreground: 0 0% 98%; /* 白 */
+
+    --border: 240 5.9% 90%; /* グレー系の境界線 */
+    --input: 240 5.9% 90%; /* 入力フィールドの背景色 */
+    --ring: 147 48% 30%; /* `primary`と一致させる */
+
+    --chart-1: 12 76% 61%; /* グラフカラー1 */
+    --chart-2: 147 58% 30%; /* `primary`を少し暗く */
+    --chart-3: 197 37% 24%; /* 青みを帯びたカラー */
+    --chart-4: 43 74% 66%; /* グリーン系の補助カラー */
+    --chart-5: 27 87% 67%; /* 黄緑系の補助カラー */
+
+    --radius: 0.5rem; /* 既存のボーダー半径 */
+  }
+
+  [data-theme='dark'] {
+    --background: 240 5% 10%; /* 暗い背景色 */
+    --foreground: 0 0% 98%; /* 明るいテキストカラー */
+
+    --card: 240 5% 15%; /* 暗いカード背景 */
+    --card-foreground: 0 0% 98%; /* カード上のテキスト */
+
+    --popover: 240 5% 15%; /* ポップオーバーの暗い背景 */
+    --popover-foreground: 0 0% 98%; /* 明るいテキスト */
+
+    --primary: 147 48% 25%; /* `primary`を暗くした色 */
+    --primary-foreground: 0 0% 98%; /* 白 */
+
+    --secondary: 147 28% 20%; /* `primary`をさらに薄くした色 */
+    --secondary-foreground: 147 48% 35%; /* 濃いグリーン */
+
+    --muted: 147 28% 20%; /* `secondary`と一致 */
+    --muted-foreground: 147 20% 25%; /* muted より少し暗い */
+
+    --accent: 34 100% 55%; /* 明るいオレンジ */
+    --accent-foreground: 0 0% 98%; /* 白 */
+
+    --destructive: 0 84.2% 55%; /* 少し暗くしたデストラクティブカラー */
+    --destructive-foreground: 0 0% 98%; /* 白 */
+
+    --border: 240 5% 20%; /* 暗いボーダー */
+    --input: 240 5% 20%; /* 入力フィールドの暗い背景色 */
+    --ring: 147 48% 25%; /* 暗い`primary`と一致 */
+
+    --chart-1: 12 76% 50%; /* グラフカラー1 */
+    --chart-2: 147 58% 25%; /* `primary`を暗く */
+    --chart-3: 197 37% 20%; /* 青みを帯びた暗いカラー */
+    --chart-4: 43 74% 50%; /* ダークテーマ用補助カラー */
+    --chart-5: 27 87% 55%; /* 黄緑系の暗い補助カラー */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -7,7 +7,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import CategoryInput from './components/category-input'
 import NoteInput from './components/note-input'
 
-import SubmitButton from '@/components/elements/button/submit-button'
+import SubmitButton from '@/components/common/button/submit-button'
 import Card from '@/components/layouts/box'
 
 const TransactionForm = () => {

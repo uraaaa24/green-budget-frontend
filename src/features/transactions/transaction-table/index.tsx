@@ -1,4 +1,4 @@
-import Table from '@/components/elements/table'
+import Table from '@/components/common/table'
 import React from 'react'
 import Card from '@/components/layouts/box'
 import { formatMonthRange } from '@/utils'

@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
-import Button from '.'
 import { LoaderCircle } from 'lucide-react'
 import { cx } from '@/libs'
+import { Button } from '@/components/ui/button'
 
 type SubmitButtonProps = ComponentProps<'button'> & {
   label: string
