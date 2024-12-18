@@ -1,6 +1,7 @@
-import { cx } from '@/libs'
+import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 import React, { useMemo } from 'react'
+import Link from 'next/link'
 
 type SidebarNavItemProps = {
   label: string
@@ -15,20 +16,20 @@ const SidebarNavItem = ({ label, href, icon }: SidebarNavItemProps) => {
 
   return (
     <li>
-      <a
+      <Link
         href={href}
-        className={cx(
+        className={cn(
           'flex items-center gap-4 rounded-md border-l-4 p-3 outline-none transition-all',
           isActive
             ? 'border-accent bg-primary text-neutral-light'
-            : 'border-transparent text-neutral-dark hover:bg-primary-light focus:ring-2 focus:ring-primary-light'
+            : 'border-transparent text-neutral-dark hover:bg-primary/90 focus:ring-2 focus:ring-primary-light'
         )}
       >
         <span className="h-6 w-6 flex-shrink-0 transition-opacity">{icon}</span>
         <span className="flex-1 truncate" title={label}>
           {label}
         </span>
-      </a>
+      </Link>
     </li>
   )
 }

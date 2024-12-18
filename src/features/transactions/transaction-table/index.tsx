@@ -1,17 +1,12 @@
 import Table from '@/components/common/table'
 import React from 'react'
-import Card from '@/components/layouts/box'
+import BaseCard from '@/components/layouts/card'
 import { formatMonthRange } from '@/utils'
 
 const TransactionTable = () => {
   const monthRange = formatMonthRange(new Date())
 
-  return (
-    <Card>
-      <h2 className="pb-4 text-2xl font-bold">{monthRange}</h2>
-      <Table />
-    </Card>
-  )
+  return <BaseCard header={{ title: monthRange }} content={<Table />} />
 }
 
 export default TransactionTable

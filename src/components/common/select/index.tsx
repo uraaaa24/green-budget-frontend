@@ -1,25 +1,36 @@
-import { ComponentProps } from 'react'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select'
 
-type SelectProps = ComponentProps<'select'> & {
-  options: string[]
+type Option = {
+  value: string
+  label: string
 }
 
-const Select = ({ id, name, defaultValue, options, ...props }: SelectProps) => {
+type BaseSelectProps = {
+  placeholder?: string
+  options: Option[]
+}
+
+const BaseSelect = ({ placeholder, options }: BaseSelectProps) => {
   return (
-    <select
-      {...props}
-      id={id}
-      name={name}
-      defaultValue={defaultValue}
-      className="w-full min-h-10 p-2 text-sm bg-neutral border border-gray-300 rounded-md focus:outline-none focus:border-primary-light transition"
-    >
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
+    <Select>
+      <SelectTrigger>
+        <SelectValue placeholder={placeholder || 'Select an option'} />
+      </SelectTrigger>
+      <SelectContent>
+        {options.map((option) => (
+          <SelectItem key={option.value} value={option.value} className="focus:bg-primary-light">
+            {option.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   )
 }
 
-export default Select
+export default BaseSelect

@@ -1,5 +1,5 @@
 import FormField from '@/components/common/form-control'
-import Input from '@/components/common/input'
+import BaseInput from '@/components/common/input'
 import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 
@@ -12,7 +12,7 @@ const NoteInput = () => {
       control={control}
       render={({ field }) => (
         <FormField label="Note">
-          <Input type="text" placeholder="Additional information" {...field} />
+          <BaseInput type="text" placeholder="Additional information" {...field} />
         </FormField>
       )}
     />

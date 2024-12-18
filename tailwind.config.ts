@@ -37,6 +37,8 @@ export default {
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
+          light: '#f5d28e',
+          dark: '#b35a0a',
           foreground: 'hsl(var(--accent-foreground))'
         },
         success: '#3CB371',
@@ -76,5 +78,5 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [require('tailwindcss-animate')]
 } satisfies Config

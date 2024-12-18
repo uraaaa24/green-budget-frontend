@@ -1,19 +1,10 @@
+import { Input } from '@/components/ui/input'
 import React, { ComponentProps } from 'react'
 
-type InputProps = ComponentProps<'input'>
+type BaseInputProps = ComponentProps<'input'>
 
-const Input = ({ type, id, name, placeholder, defaultValue, ...props }: InputProps) => {
-  return (
-    <input
-      {...props}
-      type={type}
-      id={id}
-      name={name}
-      defaultValue={defaultValue}
-      placeholder={placeholder}
-      className="w-full min-h-10 p-2 text-sm bg-neutral border border-gray-300 rounded-md focus:outline-none focus:border-primary-light transition"
-    />
-  )
+const BaseInput = ({ ...props }: BaseInputProps) => {
+  return <Input {...props} />
 }
 
-export default Input
+export default BaseInput

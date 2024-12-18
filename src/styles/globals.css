@@ -8,77 +8,126 @@ body {
 
 @layer base {
   :root {
-    --background: 240 5% 96%; /* 少し明るい背景 */
-    --foreground: 240 10% 3.9%; /* 濃いテキストカラー */
+    --background: 0 0% 100%;
+    /* 背景色 */
+    --foreground: 240 10% 3.9%;
+    /* 前景色（テキスト色） */
 
-    --card: 0 0% 100%; /* カードは白 */
-    --card-foreground: 240 10% 3.9%; /* カード上のテキスト */
+    --card: 0 0% 100%;
+    /* カード背景 */
+    --card-foreground: 240 10% 3.9%;
+    /* カード上のテキスト */
 
-    --popover: 0 0% 100%; /* ポップオーバーの背景 */
-    --popover-foreground: 240 10% 3.9%; /* ポップオーバーのテキスト */
+    --popover: 0 0% 100%;
+    /* ポップオーバー背景 */
+    --popover-foreground: 240 10% 3.9%;
+    /* ポップオーバー上のテキスト */
 
-    --primary: 147 48% 30%; /* #247157 の HSL */
-    --primary-foreground: 0 0% 98%; /* 白 */
+    --primary: 147 48% 30%;
+    /* #247157 の HSL */
+    --primary-foreground: 0 0% 98%;
+    /* 白（前景色） */
 
-    --secondary: 147 28% 85%; /* `primary`を薄くした色 */
-    --secondary-foreground: 147 48% 30%; /* `primary`の濃い色 */
+    --secondary: 240 4.8% 95.9%;
+    /* 既存の薄い色 */
+    --secondary-foreground: 240 5.9% 10%;
+    /* 既存の濃い色 */
 
-    --muted: 147 28% 85%; /* `secondary`と一致 */
-    --muted-foreground: 147 20% 25%; /* muted より少し暗い */
+    --muted: 240 4.8% 95.9%;
+    /* 既存の muted 色 */
+    --muted-foreground: 240 3.8% 46.1%;
+    /* muted の前景色 */
 
-    --accent: 34 100% 55%; /* アクセントカラーをオレンジ系に調整 */
-    --accent-foreground: 0 0% 98%; /* 白 */
+    --accent: 34 100% 55%;
+    /* 新しいアクセントカラー */
+    --accent-foreground: 0 0% 98%;
+    /* 白（アクセントの前景色） */
 
-    --destructive: 0 84.2% 60.2%; /* 既存のデストラクティブカラー */
-    --destructive-foreground: 0 0% 98%; /* 白 */
+    --destructive: 0 84.2% 60.2%;
+    /* 破壊的カラー */
+    --destructive-foreground: 0 0% 98%;
+    /* 白（破壊的前景色） */
 
-    --border: 240 5.9% 90%; /* グレー系の境界線 */
-    --input: 240 5.9% 90%; /* 入力フィールドの背景色 */
-    --ring: 147 48% 30%; /* `primary`と一致させる */
+    --border: 240 5.9% 90%;
+    /* 境界線 */
+    --input: 240 5.9% 90%;
+    /* 入力フィールド背景 */
+    --ring: 147 48% 30%;
+    /* primary と同じ色 */
 
-    --chart-1: 12 76% 61%; /* グラフカラー1 */
-    --chart-2: 147 58% 30%; /* `primary`を少し暗く */
-    --chart-3: 197 37% 24%; /* 青みを帯びたカラー */
-    --chart-4: 43 74% 66%; /* グリーン系の補助カラー */
-    --chart-5: 27 87% 67%; /* 黄緑系の補助カラー */
+    --chart-1: 34 100% 55%;
+    /* アクセントを利用したグラフ色 */
+    --chart-2: 173 58% 39%;
+    /* 既存の補助カラー */
+    --chart-3: 197 37% 24%;
+    /* 既存の補助カラー */
+    --chart-4: 43 74% 66%;
+    /* 既存の補助カラー */
+    --chart-5: 27 87% 67%;
+    /* 既存の補助カラー */
 
-    --radius: 0.5rem; /* 既存のボーダー半径 */
+    --radius: 0.5rem;
+    /* ボーダー半径 */
   }
 
-  [data-theme='dark'] {
-    --background: 240 5% 10%; /* 暗い背景色 */
-    --foreground: 0 0% 98%; /* 明るいテキストカラー */
+  [data-theme="dark"] {
+    --background: 240 5% 10%;
+    /* ダークモード背景 */
+    --foreground: 0 0% 98%;
+    /* ダークモード前景色 */
 
-    --card: 240 5% 15%; /* 暗いカード背景 */
-    --card-foreground: 0 0% 98%; /* カード上のテキスト */
+    --card: 240 5% 15%;
+    /* ダークモードのカード背景 */
+    --card-foreground: 0 0% 98%;
+    /* カード上のテキスト色 */
 
-    --popover: 240 5% 15%; /* ポップオーバーの暗い背景 */
-    --popover-foreground: 0 0% 98%; /* 明るいテキスト */
+    --popover: 240 5% 15%;
+    /* ダークモードのポップオーバー背景 */
+    --popover-foreground: 0 0% 98%;
+    /* 明るいテキスト色 */
 
-    --primary: 147 48% 25%; /* `primary`を暗くした色 */
-    --primary-foreground: 0 0% 98%; /* 白 */
+    --primary: 147 48% 25%;
+    /* primary を暗くした色 */
+    --primary-foreground: 0 0% 98%;
+    /* 白（前景色） */
 
-    --secondary: 147 28% 20%; /* `primary`をさらに薄くした色 */
-    --secondary-foreground: 147 48% 35%; /* 濃いグリーン */
+    --secondary: 240 4.8% 20%;
+    /* ダークモードの補助カラー */
+    --secondary-foreground: 240 5.9% 60%;
+    /* 補助テキストカラー */
 
-    --muted: 147 28% 20%; /* `secondary`と一致 */
-    --muted-foreground: 147 20% 25%; /* muted より少し暗い */
+    --muted: 240 4.8% 20%;
+    /* muted の補助カラー */
+    --muted-foreground: 240 3.8% 46.1%;
+    /* muted テキスト色 */
 
-    --accent: 34 100% 55%; /* 明るいオレンジ */
-    --accent-foreground: 0 0% 98%; /* 白 */
+    --accent: 34 100% 45%;
+    /* アクセントを暗くした色 */
+    --accent-foreground: 0 0% 98%;
+    /* 白（アクセントの前景色） */
 
-    --destructive: 0 84.2% 55%; /* 少し暗くしたデストラクティブカラー */
-    --destructive-foreground: 0 0% 98%; /* 白 */
+    --destructive: 0 84.2% 55%;
+    /* 破壊的カラー */
+    --destructive-foreground: 0 0% 98%;
+    /* 白（破壊的前景色） */
 
-    --border: 240 5% 20%; /* 暗いボーダー */
-    --input: 240 5% 20%; /* 入力フィールドの暗い背景色 */
-    --ring: 147 48% 25%; /* 暗い`primary`と一致 */
+    --border: 240 5% 20%;
+    /* ダークモードの境界線 */
+    --input: 240 5% 20%;
+    /* 入力フィールドの背景色 */
+    --ring: 147 48% 25%;
+    /* ダークモード用の primary */
 
-    --chart-1: 12 76% 50%; /* グラフカラー1 */
-    --chart-2: 147 58% 25%; /* `primary`を暗く */
-    --chart-3: 197 37% 20%; /* 青みを帯びた暗いカラー */
-    --chart-4: 43 74% 50%; /* ダークテーマ用補助カラー */
-    --chart-5: 27 87% 55%; /* 黄緑系の暗い補助カラー */
+    --chart-1: 34 100% 55%;
+    /* アクセントカラー */
+    --chart-2: 173 58% 39%;
+    /* 既存の補助カラー */
+    --chart-3: 197 37% 24%;
+    /* 既存の補助カラー */
+    --chart-4: 43 74% 66%;
+    /* 既存の補助カラー */
+    --chart-5: 27 87% 67%;
+    /* 既存の補助カラー */
   }
 }
 
@@ -86,6 +135,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

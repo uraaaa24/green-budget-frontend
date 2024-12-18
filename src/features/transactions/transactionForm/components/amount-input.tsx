@@ -1,5 +1,5 @@
 import FormField from '@/components/common/form-control'
-import Input from '@/components/common/input'
+import BaseInput from '@/components/common/input'
 import React from 'react'
 
 import { Controller, useFormContext } from 'react-hook-form'
@@ -13,7 +13,7 @@ const AmountInput = () => {
       control={control}
       render={({ field }) => (
         <FormField label="Amount">
-          <Input type="number" {...field} />
+          <BaseInput type="number" {...field} />
         </FormField>
       )}
     />

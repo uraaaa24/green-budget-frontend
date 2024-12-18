@@ -1,16 +1,14 @@
 import FormField from '@/components/common/form-control'
-import Select from '@/components/common/select'
+import BaseSelect from '@/components/common/select'
 import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 
 const BIG_CATEGORIES = [
-  'Food',
-  'Transportation',
-  'Health',
-  'Entertainment',
-  'Education',
-  'Investment',
-  'Other'
+  { value: 'income', label: 'Income' },
+  { value: 'expense', label: 'Expense' },
+  { value: 'transfer', label: 'Transfer' },
+  { value: 'adjustment', label: 'Adjustment' },
+  { value: 'reimbursement', label: 'Reimbursement' }
 ]
 
 const CategoryInput = () => {
@@ -22,7 +20,7 @@ const CategoryInput = () => {
       control={control}
       render={({ field }) => (
         <FormField label="Category">
-          <Select {...field} options={BIG_CATEGORIES} />
+          <BaseSelect {...field} options={BIG_CATEGORIES} />
         </FormField>
       )}
     />
