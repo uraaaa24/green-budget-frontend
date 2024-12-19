@@ -1,7 +1,7 @@
 'use client'
 
+import DatePicker from '@/components/common/date-picker'
 import FormField from '@/components/common/form-control'
-import BaseInput from '@/components/common/input'
 import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 
@@ -14,7 +14,7 @@ const DatepickerInput = () => {
       control={control}
       render={({ field }) => (
         <FormField label="Date">
-          <BaseInput type="date" {...field} />
+          <DatePicker value={field.value} setValue={field.onChange} />
         </FormField>
       )}
     />

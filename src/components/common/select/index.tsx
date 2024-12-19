@@ -19,7 +19,7 @@ type BaseSelectProps = {
 const BaseSelect = ({ placeholder, options }: BaseSelectProps) => {
   return (
     <Select>
-      <SelectTrigger>
+      <SelectTrigger className="hover:bg-gray-50">
         <SelectValue placeholder={placeholder || 'Select an option'} />
       </SelectTrigger>
       <SelectContent>
