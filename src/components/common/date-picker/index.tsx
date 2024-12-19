@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { CalendarIcon } from 'lucide-react'
 import React, { Dispatch, SetStateAction } from 'react'
 import { format } from 'date-fns'
-import BaseCalendar from '../calendar'
+import BaseSingleCalendar from '../calendar'
 
 type DatePickerProps = {
   value: Date | undefined
@@ -27,7 +27,7 @@ const DatePicker = ({ value, setValue }: DatePickerProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
-        <BaseCalendar mode="single" selected={value} onSelect={setValue} />
+        <BaseSingleCalendar mode="single" selected={value} onSelect={setValue} initialFocus />
       </PopoverContent>
     </Popover>
   )

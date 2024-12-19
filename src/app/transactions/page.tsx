@@ -1,5 +1,5 @@
 import TransactionTable from '@/features/transactions/transaction-table'
-import TransactionForm from '@/features/transactions/transactionForm'
+import TransactionForm from '@/features/transactions/transaction-form'
 
 export default function Transactions() {
   return (
