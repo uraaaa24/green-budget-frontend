@@ -1,4 +1,4 @@
-import SubmitButton from '@/components/common/button/submit-button'
+import SubmitButton from '@/components/common/buttons/submit-button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Form } from '@/components/ui/form'

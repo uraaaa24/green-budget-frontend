@@ -1,5 +1,5 @@
-import { BaseFormField } from '@/components/common/form-field'
-import BaseInput from '@/components/common/input'
+import { BaseFormField } from '@/components/common/forms/form-field'
+import BaseInput from '@/components/common/forms/input'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
