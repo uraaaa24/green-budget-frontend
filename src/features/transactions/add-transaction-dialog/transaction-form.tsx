@@ -1,11 +1,11 @@
 import SubmitButton from '@/components/common/button/submit-button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import AmountInput from './components/amount-input'
-import CategoryInput from './components/category-input'
-import DatepickerInput from './components/datepicker-input'
-import NoteInput from './components/note-input'
 import { Form } from '@/components/ui/form'
+import AmountFormField from './components/amount-form-field'
+import CategoryFormField from './components/category-form-field'
+import DateFormField from './components/date-form-field'
+import NoteFormField from './components/note-form-field'
 
 const TransactionForm = () => {
   // TODO: スキーマを定義してバリデーションを追加する
@@ -26,11 +26,11 @@ const TransactionForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <DatepickerInput />
-          <CategoryInput />
+          <DateFormField />
+          <CategoryFormField />
         </div>
-        <AmountInput />
-        <NoteInput />
+        <AmountFormField />
+        <NoteFormField />
 
         <div className="flex justify-center pt-4">
           <SubmitButton label="Save" className="w-full" />

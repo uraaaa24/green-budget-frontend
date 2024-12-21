@@ -3,19 +3,17 @@ import BaseInput from '@/components/common/input'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const NoteInput = () => {
+const AmountFormField = () => {
   const { control } = useFormContext()
 
   return (
     <BaseFormField
-      name="note"
+      name="amount"
       control={control}
-      label="Note"
-      renderContent={(field) => (
-        <BaseInput {...field} type="text" placeholder="Additional information" />
-      )}
+      label="Amount"
+      renderContent={(field) => <BaseInput {...field} type="number" />}
     />
   )
 }
 
-export default NoteInput
+export default AmountFormField
