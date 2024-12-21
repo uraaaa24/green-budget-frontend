@@ -2,19 +2,19 @@ import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { CalendarIcon } from 'lucide-react'
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { ComponentProps, Dispatch, SetStateAction } from 'react'
 import { format } from 'date-fns'
 import BaseSingleCalendar from '../calendar'
 
-type DatePickerProps = {
+type DatePickerProps = ComponentProps<'button'> & {
   value: Date | undefined
   setValue: Dispatch<SetStateAction<Date | undefined>>
 }
 
-const DatePicker = ({ value, setValue }: DatePickerProps) => {
+const DatePicker = ({ value, setValue, ...props }: DatePickerProps) => {
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger {...props} asChild>
         <Button
           variant="outline"
           className={cn(

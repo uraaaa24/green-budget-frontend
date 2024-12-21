@@ -1,9 +1,9 @@
-import FormField from '@/components/common/form-control'
+import { BaseFormField } from '@/components/common/form-field'
 import BaseSelect from '@/components/common/select'
 import React from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 
-const BIG_CATEGORIES = [
+const DUMMY_BIG_CATEGORIES = [
   { value: 'income', label: 'Income' },
   { value: 'expense', label: 'Expense' },
   { value: 'transfer', label: 'Transfer' },
@@ -15,14 +15,11 @@ const CategoryInput = () => {
   const { control } = useFormContext()
 
   return (
-    <Controller
+    <BaseFormField
       name="category"
       control={control}
-      render={({ field }) => (
-        <FormField label="Category">
-          <BaseSelect {...field} options={BIG_CATEGORIES} />
-        </FormField>
-      )}
+      label="Category"
+      renderContent={(field) => <BaseSelect {...field} options={DUMMY_BIG_CATEGORIES} />}
     />
   )
 }

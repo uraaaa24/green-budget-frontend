@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 type SubmitButtonProps = ComponentProps<'button'> & {
-  label: string
+  label?: string
   isLoading?: boolean
 }
 
-const SubmitButton = ({ label, isLoading, ...props }: SubmitButtonProps) => {
+const SubmitButton = ({ label = 'Save', isLoading, ...props }: SubmitButtonProps) => {
   return (
     <Button
       {...props}

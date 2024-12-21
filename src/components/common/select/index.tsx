@@ -5,21 +5,22 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
+import { ComponentProps } from 'react'
 
 type Option = {
   value: string
   label: string
 }
 
-type BaseSelectProps = {
+type BaseSelectProps = ComponentProps<typeof SelectTrigger> & {
   placeholder?: string
   options: Option[]
 }
 
-const BaseSelect = ({ placeholder, options }: BaseSelectProps) => {
+const BaseSelect = ({ placeholder, options, ...props }: BaseSelectProps) => {
   return (
     <Select>
-      <SelectTrigger className="hover:bg-gray-50">
+      <SelectTrigger {...props} className="hover:bg-gray-50">
         <SelectValue placeholder={placeholder || 'Select an option'} />
       </SelectTrigger>
       <SelectContent>
