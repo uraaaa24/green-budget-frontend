@@ -9,8 +9,8 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
-import TransactionForm from './transaction-form'
 import { Plus } from 'lucide-react'
+import TransactionForm from '../forms/transaction-form'
 
 const AddTransactionDialog = () => {
   return (

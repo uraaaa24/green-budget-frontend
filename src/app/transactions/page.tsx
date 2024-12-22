@@ -2,7 +2,7 @@ import Header from '@/components/layouts/header'
 import AddTransactionDialog from '@/features/transactions/components/dialogs/add-transaction'
 import TransactionTable from '@/features/transactions/components/tables/transaction-table'
 
-export default function Transactions() {
+export default async function Transactions() {
   return (
     <section className="space-y-8">
       <Header label="Transactions" />

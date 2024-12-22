@@ -2,13 +2,15 @@ import { z } from 'zod'
 
 import { createTransactionSchema } from './schema'
 
+export type TransactionType = 'income' | 'expense'
+
 export type Transaction = {
   id: number
   userId: string
   category_id: string
   amount: number
-  transaction_type: 'income' | 'expense'
-  date: string
+  transaction_type: TransactionType
+  date: string // ISO date format
   description: string
 }
 
