@@ -10,12 +10,16 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import TransactionForm from './transaction-form'
+import { Plus } from 'lucide-react'
 
 const AddTransactionDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Add transaction</Button>
+        <Button>
+          <Plus className="h-4 w-4" />
+          Add transaction
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>

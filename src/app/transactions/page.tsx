@@ -1,6 +1,6 @@
 import Header from '@/components/layouts/header'
-import AddTransactionDialog from '@/features/transactions/dialogs/add-transaction'
-import TransactionTable from '@/features/transactions/tables/transaction-table'
+import AddTransactionDialog from '@/features/transactions/components/dialogs/add-transaction'
+import TransactionTable from '@/features/transactions/components/tables/transaction-table'
 
 export default function Transactions() {
   return (
@@ -8,7 +8,9 @@ export default function Transactions() {
       <Header label="Transactions" />
 
       <div className="space-y-6">
-        <AddTransactionDialog />
+        <div className="flex justify-end">
+          <AddTransactionDialog />
+        </div>
         <TransactionTable />
       </div>
     </section>

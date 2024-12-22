@@ -2,10 +2,10 @@ import SubmitButton from '@/components/common/buttons/submit-button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Form } from '@/components/ui/form'
-import AmountFormField from './components/amount-form-field'
-import CategoryFormField from './components/category-form-field'
-import DateFormField from './components/date-form-field'
-import NoteFormField from './components/note-form-field'
+import AmountFormField from './form-fields/amount-form-field'
+import CategoryFormField from './form-fields/category-form-field'
+import DateFormField from './form-fields/date-form-field'
+import NoteFormField from './form-fields/note-form-field'
 
 const TransactionForm = () => {
   // TODO: スキーマを定義してバリデーションを追加する
