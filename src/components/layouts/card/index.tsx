@@ -1,18 +1,9 @@
-import {
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-  Card
-} from '@/components/ui/card'
+import { CardHeader, CardTitle, CardContent, CardFooter, Card } from '@/components/ui/card'
+import { isString } from '@/lib/type-guards'
 import React, { ReactNode } from 'react'
 
 type BaseCardProps = {
-  header?: {
-    title?: string
-    description?: string
-  }
+  header?: ReactNode
   content: ReactNode
   footer?: ReactNode
   className?: string
@@ -22,10 +13,7 @@ const BaseCard = ({ header, content, footer, className }: BaseCardProps) => {
   return (
     <Card className={className}>
       {header && (
-        <CardHeader>
-          {header.title && <CardTitle className="text-2xl">{header.title}</CardTitle>}
-          {header.description && <CardDescription>{header.description}</CardDescription>}
-        </CardHeader>
+        <CardHeader>{isString(header) ? <CardTitle>{header}</CardTitle> : header}</CardHeader>
       )}
       <CardContent>{content}</CardContent>
       {footer && <CardFooter>{footer}</CardFooter>}
