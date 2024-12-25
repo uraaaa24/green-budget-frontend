@@ -7,11 +7,13 @@ import { format } from 'date-fns'
 import BaseSingleCalendar from '../calendar'
 
 type DatePickerProps = ComponentProps<'button'> & {
-  value: Date | undefined
-  setValue: Dispatch<SetStateAction<Date | undefined>>
+  selected: Date | undefined
+  onSelect: Dispatch<SetStateAction<Date | undefined>>
 }
 
-const DatePicker = ({ value, setValue, ...props }: DatePickerProps) => {
+const DatePicker = ({ selected, onSelect, ...props }: DatePickerProps) => {
+  console.log('selected', selected)
+
   return (
     <Popover>
       <PopoverTrigger {...props} asChild>
@@ -19,15 +21,15 @@ const DatePicker = ({ value, setValue, ...props }: DatePickerProps) => {
           variant="outline"
           className={cn(
             'justify-start text-left font-normal hover:bg-gray-50 hover:text-inherit',
-            !value && 'text-muted-foreground'
+            !selected && 'text-muted-foreground'
           )}
         >
           <CalendarIcon />
-          {value ? format(value, 'PPP') : <span>Pick a date</span>}
+          {selected ? format(selected, 'PPP') : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
-        <BaseSingleCalendar mode="single" selected={value} onSelect={setValue} initialFocus />
+        <BaseSingleCalendar mode="single" selected={selected} onSelect={onSelect} initialFocus />
       </PopoverContent>
     </Popover>
   )

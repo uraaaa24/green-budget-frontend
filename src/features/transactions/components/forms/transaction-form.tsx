@@ -2,20 +2,19 @@ import SubmitButton from '@/components/common/buttons/submit-button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Form } from '@/components/ui/form'
-import AmountFormField from './form-fields/amount-form-field'
-import CategoryFormField from './form-fields/category-form-field'
-import DateFormField from './form-fields/date-form-field'
-import NoteFormField from './form-fields/note-form-field'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createTransactionSchema } from '@/features/transactions/schemas/schema'
 import TransactionTypeField from './form-fields/transaction-type-field'
+import AmountFormField from './form-fields/amount-field'
+import CategoryFormField from './form-fields/category-field'
+import DateFormField from './form-fields/date-field'
+import NoteFormField from './form-fields/note-field'
 
 const TransactionForm = () => {
-  // TODO: スキーマを定義してバリデーションを追加する
   const form = useForm({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
-      date: new Date().toISOString().split('T')[0],
+      date: new Date(),
       category: 'Food',
       amount: 0,
       note: '',

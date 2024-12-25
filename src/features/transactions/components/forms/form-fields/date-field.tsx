@@ -13,7 +13,9 @@ const DateFormField = () => {
       name="date"
       control={control}
       label="Date"
-      renderContent={(field) => <DatePicker {...field} setValue={field.onChange} />}
+      renderContent={(field) => (
+        <DatePicker {...field} selected={field.value} onSelect={field.onChange} />
+      )}
     />
   )
 }
