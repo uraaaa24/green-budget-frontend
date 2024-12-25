@@ -8,6 +8,7 @@ import DateFormField from './form-fields/date-form-field'
 import NoteFormField from './form-fields/note-form-field'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createTransactionSchema } from '@/features/transactions/schemas/schema'
+import TransactionTypeField from './form-fields/transaction-type-field'
 
 const TransactionForm = () => {
   // TODO: スキーマを定義してバリデーションを追加する
@@ -17,7 +18,8 @@ const TransactionForm = () => {
       date: new Date().toISOString().split('T')[0],
       category: 'Food',
       amount: 0,
-      note: ''
+      note: '',
+      transactionType: 'expense'
     }
   })
 
@@ -28,6 +30,7 @@ const TransactionForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <TransactionTypeField />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <DateFormField />
           <CategoryFormField />
