@@ -12,6 +12,7 @@ const SubmitButton = ({ label = 'Save', isLoading, ...props }: SubmitButtonProps
   return (
     <Button
       {...props}
+      type="submit"
       className={cn(
         'relative flex items-center justify-center',
         isLoading && 'pointer-events-none'

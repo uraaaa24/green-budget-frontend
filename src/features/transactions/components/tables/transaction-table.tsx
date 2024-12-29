@@ -20,12 +20,12 @@ const columns: ColumnDef<Transaction>[] = [
     header: 'Amount'
   },
   {
-    accessorKey: 'category_id',
+    accessorKey: 'category_name',
     header: 'Category'
   },
   {
-    accessorKey: 'description',
-    header: 'Description'
+    accessorKey: 'note',
+    header: 'Note'
   }
 ]
 
@@ -34,6 +34,11 @@ type TransactionTableProps = {
 }
 
 const TransactionTable = ({ transactions }: TransactionTableProps) => {
+  const data = transactions.map((transaction) => ({
+    ...transaction,
+    category_name: transaction.category.name
+  }))
+
   return (
     <BaseCard
       header={
@@ -44,7 +49,7 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
           </div>
         </div>
       }
-      content={<DataTable columns={columns} data={transactions} />}
+      content={<DataTable columns={columns} data={data} />}
     />
   )
 }

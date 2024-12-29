@@ -4,6 +4,7 @@ import React from 'react'
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -24,6 +25,9 @@ const AddTransactionDialog = () => {
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle className="text-2xl">Add Transaction</DialogTitle>
+          <DialogDescription className="text-sm">
+            Fill in the form below to add a new transaction
+          </DialogDescription>
         </DialogHeader>
 
         <TransactionForm />

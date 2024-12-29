@@ -11,7 +11,7 @@ const DUMMY_BIG_CATEGORIES = [
   { value: 'reimbursement', label: 'Reimbursement' }
 ]
 
-const CategoryFormField = () => {
+const CategoryField = () => {
   const { control } = useFormContext()
 
   return (
@@ -24,4 +24,4 @@ const CategoryFormField = () => {
   )
 }
 
-export default CategoryFormField
+export default CategoryField

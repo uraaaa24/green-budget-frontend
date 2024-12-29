@@ -12,8 +12,6 @@ type DatePickerProps = ComponentProps<'button'> & {
 }
 
 const DatePicker = ({ selected, onSelect, ...props }: DatePickerProps) => {
-  console.log('selected', selected)
-
   return (
     <Popover>
       <PopoverTrigger {...props} asChild>

@@ -1,13 +1,15 @@
 import { z } from 'zod'
 
+const transactionType = z.enum(['income', 'expense'])
+
 export const transactionSchema = z.object({
   id: z.string().uuid(),
-  userId: z.string().uuid(),
-  category_id: z.string(),
+  // userId: z.string().uuid(),
+  // categoryId: z.string(),
   amount: z.number().positive(),
-  transaction_type: z.enum(['income', 'expense']),
-  date: z.string().datetime(),
-  description: z.string()
+  transactionType: transactionType,
+  date: z.date(),
+  note: z.string().optional()
 })
 
 export const createTransactionSchema = transactionSchema.omit({ id: true })
