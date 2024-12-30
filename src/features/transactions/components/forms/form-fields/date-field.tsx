@@ -13,6 +13,7 @@ const DateField = () => {
       name="date"
       control={control}
       label="Date"
+      required
       renderContent={(field) => (
         <DatePicker {...field} selected={field.value} onSelect={field.onChange} />
       )}

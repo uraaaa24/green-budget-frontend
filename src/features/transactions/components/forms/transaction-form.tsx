@@ -15,7 +15,7 @@ const TransactionForm = () => {
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
       date: new Date(),
-      categoryId: 101,
+      category: '',
       amount: 0,
       note: '',
       transactionType: 'expense'

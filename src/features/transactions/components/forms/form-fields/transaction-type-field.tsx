@@ -13,6 +13,7 @@ const TransactionTypeField = () => {
       name="transactionType"
       control={control}
       label="Type"
+      required
       renderContent={(field) => (
         <RadioGroup
           value={field.value}

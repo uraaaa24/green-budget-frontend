@@ -18,6 +18,7 @@ const AmountField = () => {
       name="amount"
       control={control}
       label="Amount"
+      required
       renderContent={(field) => (
         <BaseInput
           {...field}

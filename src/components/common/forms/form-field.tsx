@@ -5,12 +5,14 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/comp
 export type BaseFormFieldProps<T extends FieldValues> = UseControllerProps<T> & {
   label: string
   renderContent: (field: ControllerRenderProps<T>) => ReactNode
+  required?: boolean
 }
 
 export function BaseFormField<S extends FieldValues>({
   name,
   control,
   label,
+  required,
   renderContent
 }: BaseFormFieldProps<S>) {
   return (
@@ -19,7 +21,10 @@ export function BaseFormField<S extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>
+            {label}
+            {required && <span className="ml-0.5 text-accent">*</span>}
+          </FormLabel>
           <FormControl>{renderContent(field)}</FormControl>
           <FormMessage />
         </FormItem>
