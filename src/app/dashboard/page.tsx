@@ -1,8 +1,9 @@
+import Header from '@/components/layouts/header'
+
 export default function Dashboard() {
   return (
-    <div>
-      <h1>Dashboard画面</h1>
-      <p>Dashboard画面のコンテンツ</p>
-    </div>
+    <section className="space-y-8">
+      <Header label="Dashboard" />
+    </section>
   )
 }

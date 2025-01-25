@@ -1,3 +1,9 @@
+import Header from '@/components/layouts/header'
+
 export default function Statistics() {
-  return <div>Statistics画面</div>
+  return (
+    <section className="space-y-8">
+      <Header label="Statistics" />
+    </section>
+  )
 }
