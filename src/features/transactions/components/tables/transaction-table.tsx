@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import BaseCard from '@/components/layouts/card'
 import { ColumnDef } from '@tanstack/react-table'
