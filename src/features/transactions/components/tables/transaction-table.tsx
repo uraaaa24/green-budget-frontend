@@ -36,11 +36,6 @@ type TransactionTableProps = {
 }
 
 const TransactionTable = ({ transactions }: TransactionTableProps) => {
-  const data = transactions.map((transaction) => ({
-    ...transaction,
-    category_name: transaction.category.name
-  }))
-
   return (
     <BaseCard
       header={
@@ -51,7 +46,7 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
           </div>
         </div>
       }
-      content={<DataTable columns={columns} data={data} />}
+      content={<DataTable columns={columns} data={transactions} />}
     />
   )
 }

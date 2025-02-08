@@ -7,6 +7,7 @@ export const transactionService = {
 
     return transitions.map((transaction) => ({
       ...transaction,
+      category_name: transaction.category.name,
       date: new Date(transaction.date).toLocaleDateString()
     }))
   }
