@@ -1,5 +1,5 @@
 import { getTransactions as _getTransactions } from '../api/transaction'
-import { Transaction } from '../schemas/type'
+import { Transaction } from '../types/transaction'
 
 export const transactionService = {
   async getTransactions(): Promise<Transaction[]> {

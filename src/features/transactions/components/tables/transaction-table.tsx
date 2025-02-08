@@ -3,10 +3,10 @@
 import React from 'react'
 import BaseCard from '@/components/layouts/card'
 import { ColumnDef } from '@tanstack/react-table'
-import { Transaction } from '../../schemas/type'
 import DataTable from '@/components/common/tables/data-table'
 import { CardTitle } from '@/components/ui/card'
 import AddTransactionDialog from '../dialogs/add-transaction'
+import { Transaction } from '../../types/transaction'
 
 const columns: ColumnDef<Transaction>[] = [
   {

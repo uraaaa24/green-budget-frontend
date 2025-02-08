@@ -3,26 +3,30 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Form } from '@/components/ui/form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createTransactionSchema } from '@/features/transactions/schemas/schema'
 import TransactionTypeField from './form-fields/transaction-type-field'
 import AmountField from './form-fields/amount-field'
 import CategoryField from './form-fields/category-field'
 import DateField from './form-fields/date-field'
 import NoteField from './form-fields/note-field'
+import {
+  CreateTransaction,
+  createTransactionSchema,
+  TransactionType
+} from '../../schemas/validation'
 
 const TransactionForm = () => {
   const form = useForm({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
       date: new Date(),
-      category: '',
+      category_id: '',
       amount: 0,
       note: '',
-      transactionType: 'expense'
+      transactionType: TransactionType.expense
     }
   })
 
-  const onSubmit = (data: unknown) => {
+  const onSubmit = (data: CreateTransaction) => {
     console.log('################################', data)
   }
 

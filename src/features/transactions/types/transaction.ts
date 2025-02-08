@@ -1,8 +1,4 @@
-import { z } from 'zod'
-
-import { createTransactionSchema } from './schema'
-
-export type TransactionType = 'income' | 'expense'
+import { TransactionType } from '../schemas/validation'
 
 export type Transaction = {
   id: number
@@ -16,5 +12,3 @@ export type Transaction = {
   date: string // ISO date format
   note: string
 }
-
-export type CreateTransaction = z.infer<typeof createTransactionSchema>
