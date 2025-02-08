@@ -1,4 +1,4 @@
-import { getTransactions as _getTransactions } from '../api/transaction-api'
+import { getTransactions as _getTransactions } from '../api/transaction'
 import { Transaction } from '../schemas/type'
 
 export const transactionService = {
