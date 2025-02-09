@@ -1,16 +1,25 @@
-import { fetcher } from '@/lib/fetcher'
-import { auth } from '@/lib/next-auth'
-import { generateJWT } from '@/lib/next-auth/auth.config'
-import { Transaction } from '../types/transaction'
+import {
+  createGetRequestInit,
+  createPostRequestInit,
+  generateApiUrl,
+  generateAuthHeader
+} from '@/lib/api'
+import { CreateTransaction } from '../schemas/validation'
 
-export const getTransactions = async (): Promise<Transaction[]> => {
-  const session = await auth()
-  const jwt = generateJWT(session?.accessToken, session?.user)
+const API_URL = '/transactions'
 
-  return fetcher('/transactions', {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${jwt}`
-    }
-  })
+export const getTransactions = async (): Promise<Response> => {
+  const authHeader = await generateAuthHeader()
+  const init = createGetRequestInit(authHeader)
+
+  const response = await fetch(generateApiUrl(API_URL), init)
+  return response
+}
+
+export const createTransaction = async (body: CreateTransaction): Promise<Response> => {
+  const authHeader = await generateAuthHeader()
+  const init = createPostRequestInit(authHeader, body)
+
+  const response = await fetch(generateApiUrl(API_URL), init)
+  return response
 }

@@ -1,9 +1,10 @@
 import Header from '@/components/layouts/header'
+import { getTransactions } from '@/features/transactions/api/transaction'
 import TransactionTable from '@/features/transactions/components/tables/transaction-table'
-import { transactionService } from '@/features/transactions/services/transaction-service'
 
 export default async function Transactions() {
-  const transactions = await transactionService.getTransactions()
+  const result = await getTransactions()
+  const transactions = await result.json()
 
   return (
     <section className="space-y-8">

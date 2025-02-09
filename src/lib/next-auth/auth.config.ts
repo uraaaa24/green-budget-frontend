@@ -1,22 +1,5 @@
-import { NextAuthConfig, User } from 'next-auth'
-import jwt from 'jsonwebtoken'
+import { NextAuthConfig } from 'next-auth'
 import Google from 'next-auth/providers/google'
-
-/**
- * Generate JWT token
- */
-export const generateJWT = (googleAccessToken: string | undefined, userData: User | undefined) => {
-  if (!googleAccessToken || !userData) return ''
-
-  return jwt.sign(
-    {
-      accessToken: googleAccessToken,
-      ...userData
-    },
-    process.env.AUTH_SECRET || '',
-    { expiresIn: '1h' }
-  )
-}
 
 /**
  * NextAuth configuration
