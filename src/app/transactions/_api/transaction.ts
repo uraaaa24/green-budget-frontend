@@ -1,5 +1,5 @@
 import { createGetRequestInit, createPostRequestInit, getAuthHeaders } from '@/lib/api'
-import { CreateTransaction } from '../schemas/validation'
+import { CreateTransaction } from '../_schemas/validation'
 import { TRANSACTIONS_ENDPOINT } from '@/constants/api'
 
 /**

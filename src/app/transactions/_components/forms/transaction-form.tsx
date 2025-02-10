@@ -12,8 +12,8 @@ import {
   CreateTransaction,
   createTransactionSchema,
   TransactionType
-} from '../../schemas/validation'
-import { useCreateTransaction } from '../../hooks/use-create-transaction'
+} from '../../_schemas/validation'
+import { useCreateTransaction } from '../../_hooks/use-create-transaction'
 
 const TransactionForm = () => {
   const { createTransaction, isLoading, error } = useCreateTransaction()

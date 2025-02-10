@@ -6,7 +6,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import DataTable from '@/components/common/tables/data-table'
 import { CardTitle } from '@/components/ui/card'
 import AddTransactionDialog from '../dialogs/add-transaction'
-import { Transaction } from '../../types/transaction'
+import { Transaction } from '../../_types/transaction'
 
 const columns: ColumnDef<Transaction>[] = [
   {

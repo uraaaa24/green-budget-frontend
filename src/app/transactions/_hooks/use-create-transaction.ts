@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { CreateTransaction } from '../schemas/validation'
+import { CreateTransaction } from '../_schemas/validation'
 import { isError } from '@/lib/type-guards'
-import { Transaction } from '../types/transaction'
-import { createTransaction as _createTransaction } from '@/features/transactions/api/transaction'
+import { Transaction } from '../_types/transaction'
+import { createTransaction as _createTransaction } from '@/app/transactions/_api/transaction'
 
 export const useCreateTransaction = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)

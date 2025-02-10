@@ -1,4 +1,4 @@
-import { TransactionType } from '../schemas/validation'
+import { TransactionType } from '../_schemas/validation'
 
 export type Transaction = {
   id: number
@@ -9,6 +9,6 @@ export type Transaction = {
   }
   amount: number
   transaction_type: TransactionType
-  date: string // ISO date format
+  date: string
   note: string
 }

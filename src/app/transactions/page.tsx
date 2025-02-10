@@ -1,6 +1,6 @@
 import Header from '@/components/layouts/header'
-import { getTransactions } from '@/features/transactions/api/transaction'
-import TransactionTable from '@/features/transactions/components/tables/transaction-table'
+import { getTransactions } from '@/app/transactions/_api/transaction'
+import TransactionTable from '@/app/transactions/_components/tables/transaction-table'
 import { Suspense } from 'react'
 
 export default async function Transactions() {
