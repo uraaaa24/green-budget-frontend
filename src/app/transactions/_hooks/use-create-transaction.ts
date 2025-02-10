@@ -3,8 +3,12 @@ import { CreateTransaction } from '../_schemas/validation'
 import { isError } from '@/lib/type-guards'
 import { Transaction } from '../_types/transaction'
 import { createTransaction as _createTransaction } from '@/app/transactions/_api/transaction'
+import { useSession } from 'next-auth/react'
+import { getAuthHeaders } from '@/lib/api'
 
 export const useCreateTransaction = () => {
+  const { data: session } = useSession()
+
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error | null>(null)
 
@@ -12,7 +16,8 @@ export const useCreateTransaction = () => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await _createTransaction(data)
+      const authHeaders = await getAuthHeaders(session)
+      const response = await _createTransaction(authHeaders, data)
 
       if (!response.ok) {
         throw new Error('Failed to create transaction')

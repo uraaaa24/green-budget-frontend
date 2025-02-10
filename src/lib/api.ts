@@ -1,4 +1,4 @@
-import { auth } from './next-auth'
+import { Session } from 'next-auth'
 
 /**
  * Builds authentication headers using the provided JWT token.
@@ -16,8 +16,7 @@ export const buildAuthHeaders = (jwt: string | undefined): HeadersInit => {
 /**
  * Returns authentication headers for the current session.
  */
-export const getAuthHeaders = async () => {
-  const session = await auth()
+export const getAuthHeaders = async (session: Session | null) => {
   if (!session?.accessToken || !session?.user) throw new Error('Session not found')
 
   return buildAuthHeaders(session.jwt)
