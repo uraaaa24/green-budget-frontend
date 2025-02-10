@@ -13,8 +13,11 @@ import {
   createTransactionSchema,
   TransactionType
 } from '../../schemas/validation'
+import { useCreateTransaction } from '../../hooks/use-create-transaction'
 
 const TransactionForm = () => {
+  const { createTransaction, isLoading, error } = useCreateTransaction()
+
   const form = useForm({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
@@ -27,7 +30,7 @@ const TransactionForm = () => {
   })
 
   const onSubmit = (data: CreateTransaction) => {
-    console.log('################################', data)
+    createTransaction(data)
   }
 
   return (
@@ -42,6 +45,8 @@ const TransactionForm = () => {
         <NoteField />
 
         <div className="flex justify-center pt-4">
+          {isLoading && <p className="text-gray-500">Saving...</p>}
+          {error && <p className="text-red-500">{error.message}</p>}
           <SubmitButton label="Save" className="w-full" />
         </div>
       </form>

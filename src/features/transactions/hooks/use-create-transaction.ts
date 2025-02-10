@@ -1,0 +1,37 @@
+import { useState } from 'react'
+import { CreateTransaction } from '../schemas/validation'
+import { isError } from '@/lib/type-guards'
+import { Transaction } from '../types/transaction'
+import { createTransaction as _createTransaction } from '@/features/transactions/api/transaction'
+
+export const useCreateTransaction = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [error, setError] = useState<Error | null>(null)
+
+  const createTransaction = async (data: CreateTransaction): Promise<Transaction | undefined> => {
+    setIsLoading(true)
+    setError(null)
+    try {
+      const response = await _createTransaction(data)
+
+      if (!response.ok) {
+        throw new Error('Failed to create transaction')
+      }
+
+      return response.json()
+    } catch (error) {
+      console.error('Error submitting transaction:', error)
+      if (isError(error)) {
+        setError(error)
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return {
+    createTransaction,
+    isLoading,
+    error
+  }
+}

@@ -1,23 +1,17 @@
-import { generateJWT } from '@/lib/api'
+import { buildAuthHeaders } from '@/lib/api'
 import { useSession } from 'next-auth/react'
 
 export const useAuthHeaders = () => {
   const { data } = useSession()
 
   /**
-   * 認証情報を含むヘッダーを生成する
+   * Create auth headers for requests
    */
-  const generateAuthHeader = (): HeadersInit => {
-    if (!data?.accessToken || !data?.user) return {}
-    const jwt = generateJWT(data.accessToken, data.user)
-
-    return {
-      Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json'
-    }
+  const createAuthHeader = (): HeadersInit => {
+    return buildAuthHeaders(data?.jwt)
   }
 
   return {
-    generateAuthHeader
+    createAuthHeader
   }
 }

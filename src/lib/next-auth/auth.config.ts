@@ -1,5 +1,6 @@
 import { NextAuthConfig } from 'next-auth'
 import Google from 'next-auth/providers/google'
+import { generateJWT } from './jwt'
 
 /**
  * NextAuth configuration
@@ -17,11 +18,10 @@ export const config: NextAuthConfig = {
 
       return true
     },
-    async jwt({ token, trigger, session, account }) {
-      if (trigger === 'update') token.name = session.user.name
-
+    async jwt({ token, account, user }) {
       if (account) {
         token.access_token = account.access_token as string
+        token.jwt = generateJWT(account.access_token, process.env.AUTH_SECRET, user)
       }
 
       return token
@@ -29,7 +29,8 @@ export const config: NextAuthConfig = {
     async session({ session, token }) {
       return {
         ...session,
-        accessToken: token.access_token
+        accessToken: token.access_token,
+        jwt: token.jwt
       }
     }
   }

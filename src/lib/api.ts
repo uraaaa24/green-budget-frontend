@@ -1,33 +1,12 @@
-import jwt from 'jsonwebtoken'
-import { User } from 'next-auth'
 import { auth } from './next-auth'
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL
-
 /**
- * JWTを生成する関数
+ * Builds authentication headers using the provided JWT token.
  */
-export const generateJWT = (accessToken: string | undefined, userData: User | undefined) => {
-  if (!accessToken || !userData) return ''
-
-  return jwt.sign(
-    {
-      accessToken: accessToken,
-      ...userData
-    },
-    process.env.AUTH_SECRET || '',
-    { expiresIn: '1h' }
-  )
-}
-
-/**
- * サーバーコンポーネントで利用する認証ヘッダーを生成する関数
- */
-export const generateAuthHeader = async () => {
-  const session = await auth()
-  if (!session?.accessToken || !session?.user) throw new Error('Session not found')
-
-  const jwt = generateJWT(session.accessToken, session.user)
+export const buildAuthHeaders = (jwt: string | undefined): HeadersInit => {
+  if (!jwt) {
+    throw new Error('JWT token is missing')
+  }
   return {
     Authorization: `Bearer ${jwt}`,
     'Content-Type': 'application/json'
@@ -35,14 +14,17 @@ export const generateAuthHeader = async () => {
 }
 
 /**
- * APIのURLを生成する関数
+ * Returns authentication headers for the current session.
  */
-export const generateApiUrl = (path: string): string => {
-  return `${baseUrl}${path}`
+export const getAuthHeaders = async () => {
+  const session = await auth()
+  if (!session?.accessToken || !session?.user) throw new Error('Session not found')
+
+  return buildAuthHeaders(session.jwt)
 }
 
 /**
- * リクエストオプションを生成する関数
+ * Creates a request init object with the provided method, authentication headers, and optional body.
  */
 const createRequestInit = (
   method: string,
@@ -54,11 +36,15 @@ const createRequestInit = (
   ...(body ? { body: JSON.stringify(body) } : {})
 })
 
+/** Creates a GET request init object with the provided authentication headers. */
 export const createGetRequestInit = (authHeader: HeadersInit): RequestInit =>
   createRequestInit('GET', authHeader)
+/** Creates a POST request init object with the provided authentication headers and body. */
 export const createPostRequestInit = (authHeader: HeadersInit, body?: unknown): RequestInit =>
   createRequestInit('POST', authHeader, body)
+/** Creates a PUT request init object with the provided authentication headers and body. */
 export const createPutRequestInit = (authHeader: HeadersInit, body?: unknown): RequestInit =>
   createRequestInit('PUT', authHeader, body)
+/** Creates a DELETE request init object with the provided authentication headers. */
 export const createDeleteRequestInit = (authHeader: HeadersInit): RequestInit =>
   createRequestInit('DELETE', authHeader)
