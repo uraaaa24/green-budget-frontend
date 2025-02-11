@@ -1,7 +1,7 @@
 'use client'
 
 import { useDateRange } from '@/contexts/date-range-context'
-import { formatDate } from '@/utils'
+import { formattedDate } from '@/utils'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import React, { ComponentProps } from 'react'
@@ -16,7 +16,7 @@ const Header = ({ label, ...props }: HeaderProps) => {
 
   const { dateRange } = useDateRange()
 
-  const dateRangeText = `${formatDate(dateRange.startDate)} - ${formatDate(dateRange.endDate)}`
+  const dateRangeText = `${formattedDate(dateRange.startDate)} - ${formattedDate(dateRange.endDate)}`
 
   return (
     <header {...props} className="space-y-2">

@@ -7,10 +7,10 @@ export const TransactionType = {
 export type TransactionType = keyof typeof TransactionType
 
 export const createTransactionSchema = z.object({
-  category_id: z.string(),
-  amount: z.number().positive(),
-  transactionType: z.nativeEnum(TransactionType),
+  category_id: z.number().int().optional().nullable(),
+  amount: z.number().int(),
+  transaction_type: z.nativeEnum(TransactionType),
   date: z.date(),
-  note: z.string().optional()
+  note: z.string().optional().nullable()
 })
 export type CreateTransaction = z.infer<typeof createTransactionSchema>

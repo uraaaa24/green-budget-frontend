@@ -5,7 +5,7 @@ import { BaseFormField } from '@/components/common/forms/form-field'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const DateField = () => {
+export const DateField = () => {
   const { control } = useFormContext()
 
   return (
@@ -20,5 +20,3 @@ const DateField = () => {
     />
   )
 }
-
-export default DateField

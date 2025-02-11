@@ -3,7 +3,7 @@ import BaseInput from '@/components/common/forms/input'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const NoteField = () => {
+export const NoteField = () => {
   const { control } = useFormContext()
 
   return (
@@ -17,5 +17,3 @@ const NoteField = () => {
     />
   )
 }
-
-export default NoteField

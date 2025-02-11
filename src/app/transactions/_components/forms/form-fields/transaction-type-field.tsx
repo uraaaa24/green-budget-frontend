@@ -5,12 +5,12 @@ import { cn } from '@/lib/utils'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const TransactionTypeField = () => {
+export const TransactionTypeField = () => {
   const { control } = useFormContext()
 
   return (
     <BaseFormField
-      name="transactionType"
+      name="transaction_type"
       control={control}
       label="Type"
       required
@@ -49,5 +49,3 @@ const TransactionTypeField = () => {
     />
   )
 }
-
-export default TransactionTypeField

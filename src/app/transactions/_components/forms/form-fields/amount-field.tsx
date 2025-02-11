@@ -3,7 +3,7 @@ import BaseInput from '@/components/common/forms/input'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const AmountField = () => {
+export const AmountField = () => {
   const { control } = useFormContext()
 
   const handleChange = (value: string, onChange: (value: number) => void) => {
@@ -29,5 +29,3 @@ const AmountField = () => {
     />
   )
 }
-
-export default AmountField

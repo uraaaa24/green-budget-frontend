@@ -1,6 +1,8 @@
+import { format } from 'date-fns'
+
 /**
  * Format date to string  'YYYY-MM-DD'
  */
-export const formatDate = (date: Date) => {
-  return date.toISOString().split('T')[0]
+export const formattedDate = (date: Date) => {
+  return format(date, 'yyyy-MM-dd')
 }

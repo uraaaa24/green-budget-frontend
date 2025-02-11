@@ -3,34 +3,41 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Form } from '@/components/ui/form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import TransactionTypeField from './form-fields/transaction-type-field'
-import AmountField from './form-fields/amount-field'
-import CategoryField from './form-fields/category-field'
-import DateField from './form-fields/date-field'
-import NoteField from './form-fields/note-field'
+
 import {
   CreateTransaction,
   createTransactionSchema,
   TransactionType
 } from '../../_schemas/validation'
 import { useCreateTransaction } from '../../_hooks/use-create-transaction'
+import { useRouter } from 'next/navigation'
+import {
+  AmountField,
+  // CategoryField,
+  DateField,
+  NoteField,
+  TransactionTypeField
+} from './form-fields'
 
 const TransactionForm = () => {
+  const router = useRouter()
+
   const { createTransaction, isLoading, error } = useCreateTransaction()
 
   const form = useForm({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
       date: new Date(),
-      category_id: '',
+      category_id: null,
       amount: 0,
       note: '',
-      transactionType: TransactionType.expense
+      transaction_type: TransactionType.expense
     }
   })
 
   const onSubmit = (data: CreateTransaction) => {
     createTransaction(data)
+    router.refresh()
   }
 
   return (
@@ -39,7 +46,8 @@ const TransactionForm = () => {
         <TransactionTypeField />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <DateField />
-          <CategoryField />
+          {/* TODO: カテゴリーの使用が決まったら表示 */}
+          {/* <CategoryField /> */}
         </div>
         <AmountField />
         <NoteField />
