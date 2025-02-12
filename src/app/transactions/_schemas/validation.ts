@@ -1,15 +1,15 @@
 import { z } from 'zod'
 
-export const TransactionType = {
+export const TransactionTypeMap = {
   income: 'income',
   expense: 'expense'
 } as const
-export type TransactionType = keyof typeof TransactionType
+export type TransactionType = keyof typeof TransactionTypeMap
 
 export const createTransactionSchema = z.object({
   category_id: z.number().int().optional().nullable(),
   amount: z.number().int(),
-  transaction_type: z.nativeEnum(TransactionType),
+  transaction_type: z.nativeEnum(TransactionTypeMap),
   date: z.date(),
   note: z.string().optional().nullable()
 })
