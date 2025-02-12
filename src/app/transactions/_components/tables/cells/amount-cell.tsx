@@ -1,4 +1,4 @@
-import { TransactionType, TransactionTypeMap } from '@/app/transactions/_schemas/validation'
+import { TransactionType, TRANSACTION_TYPES } from '@/app/transactions/_schemas/validation'
 
 const ExpenseAmountCell = ({ amount }: { amount: number }) => {
   return (
@@ -22,7 +22,7 @@ type AmountCellProps = {
 }
 
 export const AmountCell = ({ transactionType, amount }: AmountCellProps) => {
-  return transactionType === TransactionTypeMap.expense ? (
+  return transactionType === TRANSACTION_TYPES.expense ? (
     <ExpenseAmountCell amount={amount} />
   ) : (
     <IncomeAmountCell amount={amount} />

@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import {
   CreateTransaction,
   createTransactionSchema,
-  TransactionTypeMap
+  TRANSACTION_TYPES
 } from '../../_schemas/validation'
 import { useCreateTransaction } from '../../_hooks/use-create-transaction'
 import { useRouter } from 'next/navigation'
@@ -31,7 +31,7 @@ const TransactionForm = () => {
       category_id: null,
       amount: 0,
       note: '',
-      transaction_type: TransactionTypeMap.expense
+      transaction_type: TRANSACTION_TYPES.expense
     }
   })
 
