@@ -8,7 +8,7 @@ export type TransactionType = keyof typeof TransactionTypeMap
 
 export const createTransactionSchema = z.object({
   category_id: z.number().int().optional().nullable(),
-  amount: z.number().int(),
+  amount: z.number().int().positive(),
   transaction_type: z.nativeEnum(TransactionTypeMap),
   date: z.date(),
   note: z.string().optional().nullable()
