@@ -51,8 +51,7 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
   ]
 
   // TODO: api取得時に日付の範囲でフィルタリングできるようになったら、この処理は不要
-  const { dateRange } = useDateRange()
-  const { startDate, endDate } = dateRange
+  const { startDate, endDate } = useDateRange()
   const filteredTransactions = transactions.filter((transaction) => {
     const transactionDate = new Date(transaction.date)
     return transactionDate >= startDate && transactionDate <= endDate

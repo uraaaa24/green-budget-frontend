@@ -4,7 +4,8 @@ import { DateRange } from '@/reducers/date-range-reducer'
 import { createContext, useContext } from 'react'
 
 export type DateRangeContextType = {
-  dateRange: DateRange
+  startDate: Date
+  endDate: Date
   setDateRange: (dateRange: DateRange) => void
 }
 

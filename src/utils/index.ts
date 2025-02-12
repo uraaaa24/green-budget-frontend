@@ -10,6 +10,6 @@ export const formattedDate = (date: Date) => {
 /**
  * Format date to string 'dd MMM yyyy'
  */
-export const formatDatePretty = (date: Date) => {
-  return format(date, 'dd MMM yyyy')
+export const formattedDatePretty = (date: Date, yearHidden = false) => {
+  return format(date, yearHidden ? 'dd MMM' : 'dd MMM yyyy')
 }

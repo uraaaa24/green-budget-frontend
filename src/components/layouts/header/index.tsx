@@ -1,10 +1,10 @@
 'use client'
 
 import { useDateRange } from '@/contexts/date-range-context'
-import { formattedDate } from '@/utils'
+import { formattedDatePretty } from '@/utils'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
-import React, { ComponentProps } from 'react'
+import { ComponentProps } from 'react'
 
 type HeaderProps = ComponentProps<'header'> & {
   label: string
@@ -13,10 +13,11 @@ type HeaderProps = ComponentProps<'header'> & {
 const Header = ({ label, ...props }: HeaderProps) => {
   const { data } = useSession()
   const user = data?.user
+  const userNameInitial = user?.name?.charAt(0)?.toUpperCase() ?? 'U'
 
-  const { dateRange } = useDateRange()
-
-  const dateRangeText = `${formattedDate(dateRange.startDate)} - ${formattedDate(dateRange.endDate)}`
+  const { startDate, endDate } = useDateRange()
+  const isSameYear = startDate.getFullYear() === endDate.getFullYear()
+  const dateRangeText = `${formattedDatePretty(startDate, isSameYear)} - ${formattedDatePretty(endDate)}`
 
   return (
     <header {...props} className="space-y-2">
@@ -28,7 +29,7 @@ const Header = ({ label, ...props }: HeaderProps) => {
             <Image
               draggable={false}
               src={user.image}
-              alt={`${user.name ?? 'ユーザー'}のプロフィール画像`}
+              alt={`${user.name || 'User'}'s profile image`}
               width={45}
               height={45}
               className="rounded-full"
@@ -38,7 +39,7 @@ const Header = ({ label, ...props }: HeaderProps) => {
               className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-300 text-gray-600"
               aria-label="ユーザー画像なし"
             >
-              {user?.name?.charAt(0)?.toUpperCase() ?? 'U'}
+              {userNameInitial}
             </div>
           )}
         </div>

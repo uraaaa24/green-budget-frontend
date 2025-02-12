@@ -20,7 +20,7 @@ export type DateRangeAction = SetDateRangeAction
 export const dateRangeReducer = (state: DateRange, action: DateRangeAction): DateRange => {
   switch (action.type) {
     case 'SET_DATE_RANGE':
-      return action.payload
+      return { startDate: action.payload.startDate, endDate: action.payload.endDate }
     default:
       return state
   }

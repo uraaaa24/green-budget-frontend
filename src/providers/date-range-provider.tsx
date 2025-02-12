@@ -12,7 +12,8 @@ export const DateRangeProvider = ({ children }: DateRangeProviderProps) => {
   const [state, dispatch] = useReducer(dateRangeReducer, initialDateRange)
 
   const contextValue: DateRangeContextType = {
-    dateRange: state,
+    startDate: state.startDate,
+    endDate: state.endDate,
     setDateRange: (dateRange) => dispatch({ type: 'SET_DATE_RANGE', payload: dateRange })
   }
 
