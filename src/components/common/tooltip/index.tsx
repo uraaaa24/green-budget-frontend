@@ -13,14 +13,19 @@ const CustomTooltip = ({
   content,
   side = 'top',
   align = 'center',
-  delayDuration = 500,
+  delayDuration = 300,
   children
 }: CustomTooltipProps) => {
   return (
     <TooltipProvider>
       <Tooltip delayDuration={delayDuration}>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent side={side} align={align} className="bg-gray-500 text-white">
+        <TooltipContent
+          side={side}
+          align={align}
+          sideOffset={15}
+          className="bg-gray-800/70 text-xs text-white shadow-md"
+        >
           {content}
         </TooltipContent>
       </Tooltip>
