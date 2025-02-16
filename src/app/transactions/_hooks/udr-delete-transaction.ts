@@ -1,33 +1,33 @@
 import { useState } from 'react'
-import { CreateTransaction } from '../_schemas/validation'
-import { isError } from '@/lib/type-guards'
-import { Transaction } from '../_types/transaction'
-import { createTransaction as _createTransaction } from '@/app/transactions/_api/transaction'
+import { deleteTransaction as _deleteTransaction } from '@/app/transactions/_api/transaction'
 import { useSession } from 'next-auth/react'
 import { getAuthHeaders } from '@/lib/api'
+import { isError } from '@/lib/type-guards'
 
 /**
- * Hook to create a transaction
+ * Hook to delete a transaction
  */
-export const useCreateTransaction = () => {
+export const useDeleteTransaction = () => {
   const { data: session } = useSession()
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error | null>(null)
+  const [done, setDone] = useState<boolean>(false)
 
-  const createTransaction = async (data: CreateTransaction): Promise<Transaction | undefined> => {
+  const deleteTransaction = async (id: string): Promise<void> => {
     setIsLoading(true)
     setError(null)
+    setDone(false)
 
     try {
       const authHeaders = await getAuthHeaders(session)
-      const response = await _createTransaction(authHeaders, data)
+      const response = await _deleteTransaction(authHeaders, id)
 
       if (!response.ok) {
-        throw new Error('Failed to create transaction')
+        throw new Error('Failed to delete transaction')
       }
 
-      return response.json()
+      setDone(true)
     } catch (error) {
       console.error('Error submitting transaction:', error)
       if (isError(error)) {
@@ -39,8 +39,9 @@ export const useCreateTransaction = () => {
   }
 
   return {
-    createTransaction,
+    deleteTransaction,
     isLoading,
-    error
+    error,
+    done
   }
 }

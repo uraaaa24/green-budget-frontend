@@ -1,38 +1,32 @@
 'use client'
 
-import React from 'react'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import TransactionForm from '../forms/transaction-form'
+import BaseDialog from '@/components/common/dialogs/dialog'
+import { useState } from 'react'
 
+/**
+ * Dialog to add a new transaction
+ */
 const AddTransactionDialog = () => {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BaseDialog
+      trigger={
         <Button>
           <Plus className="h-4 w-4" />
           Add transaction
         </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-2xl">
-        <DialogHeader>
-          <DialogTitle className="text-2xl">Add Transaction</DialogTitle>
-          <DialogDescription className="text-sm">
-            Fill in the form below to add a new transaction
-          </DialogDescription>
-        </DialogHeader>
-
-        <TransactionForm />
-      </DialogContent>
-    </Dialog>
+      }
+      open={open}
+      onOpenChange={() => setOpen(!open)}
+      title="Add Transaction"
+      description="Fill in the form below to add a new transaction"
+    >
+      <TransactionForm onDialogClose={() => setOpen(false)} />
+    </BaseDialog>
   )
 }
 

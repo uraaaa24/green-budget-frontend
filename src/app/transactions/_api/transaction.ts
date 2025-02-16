@@ -1,6 +1,6 @@
-import { createGetRequestInit, createPostRequestInit } from '@/lib/api'
+import { createDeleteRequestInit, createGetRequestInit, createPostRequestInit } from '@/lib/api'
 import { CreateTransaction } from '../_schemas/validation'
-import { TRANSACTIONS_ENDPOINT } from '@/constants/api'
+import { generateDeleteTransactionEndpoint, TRANSACTIONS_ENDPOINT } from '@/constants/api'
 
 /**
  * Get all transactions
@@ -22,5 +22,18 @@ export const createTransaction = async (
   const init = createPostRequestInit(authHeaders, body)
 
   const response = await fetch(TRANSACTIONS_ENDPOINT, init)
+  return response
+}
+
+/**
+ * Delete a transaction
+ */
+export const deleteTransaction = async (
+  authHeaders: HeadersInit,
+  id: string
+): Promise<Response> => {
+  const init = createDeleteRequestInit(authHeaders)
+
+  const response = await fetch(generateDeleteTransactionEndpoint(id), init)
   return response
 }

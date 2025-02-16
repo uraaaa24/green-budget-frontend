@@ -19,7 +19,14 @@ import {
   TransactionTypeField
 } from './form-fields'
 
-const TransactionForm = () => {
+type TransactionFormProps = {
+  onDialogClose: () => void
+}
+
+/**
+ * Form to create a new transaction
+ */
+const TransactionForm = ({ onDialogClose }: TransactionFormProps) => {
   const router = useRouter()
 
   const { createTransaction, isLoading, error } = useCreateTransaction()
@@ -35,8 +42,10 @@ const TransactionForm = () => {
     }
   })
 
-  const onSubmit = (data: CreateTransaction) => {
-    createTransaction(data)
+  const onSubmit = async (data: CreateTransaction) => {
+    await createTransaction(data)
+
+    onDialogClose()
     router.refresh()
   }
 

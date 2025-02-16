@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import BaseCard from '@/components/layouts/card'
 import { ColumnDef } from '@tanstack/react-table'
 import DataTable from '@/components/common/tables/data-table'
@@ -9,6 +8,7 @@ import AddTransactionDialog from '../dialogs/add-transaction'
 import { Transaction } from '../../_types/transaction'
 import { useDateRange } from '@/contexts/date-range-context'
 import { AmountCell, CategoryCell, DateCell, NoteCell } from './cells'
+import ActionsCell from './cells/actions-cell'
 
 type TransactionTableProps = {
   transactions: Transaction[]
@@ -46,6 +46,15 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
       header: 'Note',
       cell: ({ getValue }) => {
         return <NoteCell note={getValue() as string} />
+      }
+    },
+    {
+      id: 'actions',
+      header: 'Actions',
+      cell: ({ row }) => {
+        const transaction = row.original
+
+        return <ActionsCell id={transaction.id} />
       }
     }
   ]
