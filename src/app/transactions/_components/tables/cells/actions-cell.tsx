@@ -2,6 +2,7 @@ import { useDeleteTransaction } from '@/app/transactions/_hooks/udr-delete-trans
 import BaseDialog from '@/components/common/dialogs/dialog'
 import { Button } from '@/components/ui/button'
 import { Trash } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 type ActionsCellProps = {
@@ -9,9 +10,11 @@ type ActionsCellProps = {
 }
 
 const DeleteAction = ({ id }: ActionsCellProps) => {
+  const router = useRouter()
+
   const [open, setOpen] = useState(false)
 
-  const { deleteTransaction, isLoading, error, done } = useDeleteTransaction()
+  const { deleteTransaction, isLoading, error } = useDeleteTransaction()
 
   const handleDialogClose = () => {
     setOpen(!open)
@@ -20,9 +23,8 @@ const DeleteAction = ({ id }: ActionsCellProps) => {
   const handleDelete = async () => {
     await deleteTransaction(id.toString())
 
-    if (done) {
-      setOpen(false)
-    }
+    router.refresh()
+    setOpen(false)
   }
 
   return (

@@ -12,12 +12,10 @@ export const useDeleteTransaction = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error | null>(null)
-  const [done, setDone] = useState<boolean>(false)
 
   const deleteTransaction = async (id: string): Promise<void> => {
     setIsLoading(true)
     setError(null)
-    setDone(false)
 
     try {
       const authHeaders = await getAuthHeaders(session)
@@ -26,8 +24,6 @@ export const useDeleteTransaction = () => {
       if (!response.ok) {
         throw new Error('Failed to delete transaction')
       }
-
-      setDone(true)
     } catch (error) {
       console.error('Error submitting transaction:', error)
       if (isError(error)) {
@@ -41,7 +37,6 @@ export const useDeleteTransaction = () => {
   return {
     deleteTransaction,
     isLoading,
-    error,
-    done
+    error
   }
 }
