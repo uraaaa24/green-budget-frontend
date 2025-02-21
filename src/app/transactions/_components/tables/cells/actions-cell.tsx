@@ -1,4 +1,4 @@
-import { useDeleteTransaction } from '@/app/transactions/_hooks/udr-delete-transaction'
+import { useDeleteTransaction } from '@/app/transactions/_hooks/use-delete-transaction'
 import BaseDialog from '@/components/common/dialogs/dialog'
 import { Button } from '@/components/ui/button'
 import { Trash } from 'lucide-react'

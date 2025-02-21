@@ -18,11 +18,11 @@ type BaseSelectProps = ComponentProps<typeof SelectTrigger> & {
   defaultValue?: string
 }
 
-const BaseSelect = ({ placeholder, options, defaultValue, ...props }: BaseSelectProps) => {
+const BaseSelect = ({ options, defaultValue, ...props }: BaseSelectProps) => {
   return (
     <Select defaultValue={defaultValue}>
       <SelectTrigger {...props} className="hover:bg-gray-50">
-        <SelectValue placeholder={placeholder || 'Select an option'} />
+        <SelectValue placeholder={'Select an option'} />
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (

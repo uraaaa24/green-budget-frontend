@@ -4,3 +4,5 @@ export const TRANSACTIONS_ENDPOINT = `${BASE_API_URL}/transactions`
 export const DELETE_TRANSACTION_ENDPOINT = `${BASE_API_URL}/transactions/{id}`
 export const generateDeleteTransactionEndpoint = (id: string) =>
   DELETE_TRANSACTION_ENDPOINT.replace('{id}', id)
+
+export const CATEGORIES_ENDPOINT = `${BASE_API_URL}/categories`

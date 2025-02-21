@@ -13,7 +13,7 @@ import { useCreateTransaction } from '../../_hooks/use-create-transaction'
 import { useRouter } from 'next/navigation'
 import {
   AmountField,
-  // CategoryField,
+  CategoryField,
   DateField,
   NoteField,
   TransactionTypeField
@@ -55,8 +55,7 @@ const TransactionForm = ({ onDialogClose }: TransactionFormProps) => {
         <TransactionTypeField />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <DateField />
-          {/* TODO: カテゴリーの使用が決まったら表示 */}
-          {/* <CategoryField /> */}
+          <CategoryField />
         </div>
         <AmountField />
         <NoteField />
