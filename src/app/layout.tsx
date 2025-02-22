@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import Sidebar from '@/components/layouts/sidebar'
+import Navigation from '@/components/layouts/navigation'
 import { DateRangeProvider } from '@/providers/date-range-provider'
 import { SessionProvider } from 'next-auth/react'
+import { ResponsiveLayoutProvider } from '@/providers/responsive-layout-provider'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,10 +32,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen bg-neutral text-textColors-primary antialiased`}
       >
         <SessionProvider>
-          <DateRangeProvider>
-            <Sidebar />
-            <main className="flex-1 overflow-auto px-10 py-6 sm:ml-64">{children}</main>
-          </DateRangeProvider>
+          <ResponsiveLayoutProvider>
+            <DateRangeProvider>
+              <Navigation />
+              <main className="flex-1 overflow-auto px-10 py-6 sm:ml-64">{children}</main>
+            </DateRangeProvider>
+          </ResponsiveLayoutProvider>
         </SessionProvider>
       </body>
     </html>

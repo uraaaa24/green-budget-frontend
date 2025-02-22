@@ -1,9 +1,8 @@
-import React from 'react'
-import SidebarNavItem from './nav-item'
-import { NAV_ITEMS } from '@/components/layouts/sidebar/constants/nav-items'
 import SignOutButton from '@/components/common/buttons/signout-button'
+import { NAV_ITEMS } from '../constants/nav-items'
+import SidebarNavItem from './nav-item'
 
-const SideBar = () => {
+const Sidebar = () => {
   return (
     <aside
       className="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full bg-primary-dark text-neutral-light transition-transform sm:translate-x-0"
@@ -22,4 +21,4 @@ const SideBar = () => {
   )
 }
 
-export default SideBar
+export default Sidebar
