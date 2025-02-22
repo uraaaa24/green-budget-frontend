@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog'
+import { cn } from '@/lib/utils'
 import React, { ComponentProps, ReactNode } from 'react'
 
 type BaseDialogProps = {
@@ -33,12 +34,18 @@ const BaseDialog = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent {...contentProps}>
+      <DialogContent
+        {...contentProps}
+        className={cn(
+          'flex flex-col sm:items-center sm:justify-center md:items-start md:justify-start',
+          contentProps?.className
+        )}
+      >
         <DialogHeader>
           <DialogTitle className="text-2xl">{title}</DialogTitle>
           {description && <DialogDescription className="text-sm">{description}</DialogDescription>}
         </DialogHeader>
-        {children && <div className="my-4">{children}</div>}
+        {children && <div className="my-4 grow">{children}</div>} {/* growを追加 */}
         {footer && <DialogFooter>{footer}</DialogFooter>}
       </DialogContent>
     </Dialog>

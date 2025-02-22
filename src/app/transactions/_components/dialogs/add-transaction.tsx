@@ -24,6 +24,9 @@ const AddTransactionDialog = () => {
       onOpenChange={() => setOpen(!open)}
       title="Add Transaction"
       description="Fill in the form below to add a new transaction"
+      contentProps={{
+        className: 'md:w-auto w-full h-full md:h-auto'
+      }}
     >
       <TransactionForm onDialogClose={() => setOpen(false)} />
     </BaseDialog>
