@@ -1,34 +1,40 @@
 import { NextAuthConfig } from 'next-auth'
 import Google from 'next-auth/providers/google'
-import { generateJWT } from './jwt'
 import { JWT } from 'next-auth/jwt'
+import { generateJWT } from './jwt'
 
 /**
  * Refreshes the access token using the provided refresh token.
  */
 const refreshAccessToken = async (token: JWT): Promise<JWT> => {
+  if (!token.refresh_token) {
+    console.error('Missing refresh_token')
+    return { ...token, error: 'RefreshTokenError' }
+  }
+
   try {
-    const url = 'https://oauth2.googleapis.com/token'
-    const response = await fetch(url, {
+    const response = await fetch('https://oauth2.googleapis.com/token', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
-        client_id: process.env.GOOGLE_CLIENT_ID!,
-        client_secret: process.env.GOOGLE_CLIENT_SECRET!,
+        client_id: process.env.AUTH_GOOGLE_ID!,
+        client_secret: process.env.AUTH_GOOGLE_SECRET!,
         grant_type: 'refresh_token',
-        refresh_token: token.refresh_token!
+        refresh_token: token.refresh_token
       })
     })
 
     const refreshedTokens = await response.json()
-    if (!response.ok) throw refreshedTokens
+    if (!response.ok) throw new Error(refreshedTokens.error || 'Failed to refresh token')
 
     return {
       ...token,
       access_token: refreshedTokens.access_token,
-      expires_at: Date.now() + refreshedTokens.expires_at * 1000
+      expires_at: Math.floor(Date.now() / 1000 + refreshedTokens.expires_in),
+      refresh_token: refreshedTokens.refresh_token ?? token.refresh_token
     }
   } catch (error) {
-    console.error('Error refreshing access token', error)
+    console.error('Error refreshing access token:', error)
     return { ...token, error: 'RefreshTokenError' }
   }
 }
@@ -36,33 +42,29 @@ const refreshAccessToken = async (token: JWT): Promise<JWT> => {
 export const config: NextAuthConfig = {
   providers: [
     Google({
-      // Google requires "offline" access_type to provide a `refresh_token`
       authorization: { params: { access_type: 'offline', prompt: 'consent' } }
     })
   ],
   basePath: '/api/auth',
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isAuthorizedUrl = nextUrl.pathname !== 'login'
-      if (!isAuthorizedUrl) return true
-      return !!auth?.user
-    },
     async jwt({ token, account, user }) {
+      const customToken: JWT = token as JWT
+
+      // Initial sign in
       if (account) {
         return {
+          ...customToken,
           access_token: account.access_token,
+          expires_at: Math.floor(Date.now() / 1000 + (account.expires_in ?? 3600)),
           refresh_token: account.refresh_token,
-          expires_at: Date.now() + (account.expires_at ?? 0) * 1000,
-          jwt: generateJWT(account.access_token, process.env.AUTH_SECRET, user)
+          jwt: generateJWT(account.id_token, process.env.AUTH_SECRET, user)
         } as JWT
       }
 
-      // Renew the token if it has expired
-      if (Date.now() > token.expires_at) {
-        return await refreshAccessToken(token)
-      }
-
-      return token
+      // Return previous token if the access token has not expired
+      return Date.now() < customToken.expires_at * 1000
+        ? customToken
+        : await refreshAccessToken(customToken)
     },
     async session({ session, token }) {
       return {
