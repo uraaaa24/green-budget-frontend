@@ -6,6 +6,10 @@ import { generateJWT } from './jwt'
  * NextAuth configuration
  */
 export const config: NextAuthConfig = {
+  secret: process.env.AUTH_SECRET,
+  session: {
+    strategy: 'jwt'
+  },
   providers: [Google],
   basePath: '/api/auth',
   callbacks: {
@@ -23,7 +27,6 @@ export const config: NextAuthConfig = {
         token.access_token = account.access_token as string
         token.jwt = generateJWT(account.access_token, process.env.AUTH_SECRET, user)
       }
-
       return token
     },
     async session({ session, token }) {

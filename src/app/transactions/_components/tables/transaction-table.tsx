@@ -19,22 +19,22 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
     {
       accessorKey: 'date',
       header: 'Date',
-      cell: ({ getValue }) => {
-        return <DateCell date={getValue() as string} />
+      cell: ({ row }) => {
+        return <DateCell date={row.original.date} />
       }
     },
     {
       accessorKey: 'category',
       header: 'Category',
-      cell: ({ getValue }) => {
-        return <CategoryCell category={getValue() as string} />
+      cell: ({ row }) => {
+        return <CategoryCell category={row.original.category} />
       }
     },
     {
       accessorKey: 'amount',
       header: 'Amount',
-      cell: ({ row, getValue }) => {
-        const amount = getValue() as number
+      cell: ({ row }) => {
+        const amount = row.original.amount
         const transaction = row.original
         const transactionType = transaction.transaction_type
 
@@ -44,8 +44,8 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
     {
       accessorKey: 'note',
       header: 'Note',
-      cell: ({ getValue }) => {
-        return <NoteCell note={getValue() as string} />
+      cell: ({ row }) => {
+        return <NoteCell note={row.original.note} />
       }
     },
     {
@@ -61,7 +61,7 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
 
   // TODO: api取得時に日付の範囲でフィルタリングできるようになったら、この処理は不要
   const { startDate, endDate } = useDateRange()
-  const filteredTransactions = transactions.filter((transaction) => {
+  const filteredTransactions = (transactions ?? []).filter((transaction) => {
     const transactionDate = new Date(transaction.date)
     return transactionDate >= startDate && transactionDate <= endDate
   })

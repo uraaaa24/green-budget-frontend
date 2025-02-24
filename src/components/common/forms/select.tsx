@@ -5,24 +5,24 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import { ComponentProps } from 'react'
 
 type Option = {
   value: string
   label: string
 }
 
-type BaseSelectProps = ComponentProps<typeof SelectTrigger> & {
+type BaseSelectProps = {
   placeholder?: string
   options: Option[]
-  defaultValue?: string
+  value: string
+  onChange: (value: string) => void
 }
 
-const BaseSelect = ({ options, defaultValue, ...props }: BaseSelectProps) => {
+const BaseSelect = ({ options, value, onChange, placeholder, ...props }: BaseSelectProps) => {
   return (
-    <Select defaultValue={defaultValue}>
+    <Select value={value} onValueChange={onChange}>
       <SelectTrigger {...props} className="hover:bg-gray-50">
-        <SelectValue placeholder={'Select an option'} />
+        <SelectValue placeholder={placeholder || 'Select an option'} />
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (

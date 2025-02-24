@@ -10,7 +10,6 @@ export const CategoryField = () => {
 
   const getCategoryOptions = () => {
     const transactionType = getValues('transaction_type')
-
     if (!Array.isArray(data)) return []
 
     return data
@@ -31,7 +30,17 @@ export const CategoryField = () => {
       control={control}
       label="Category"
       required
-      renderContent={(field) => <BaseSelect {...field} options={options} />}
+      renderContent={(field) => {
+        const { value, onChange, ...rest } = field
+        return (
+          <BaseSelect
+            {...rest}
+            options={options}
+            value={value !== null ? value.toString() : ''}
+            onChange={(val) => onChange(Number(val))}
+          />
+        )
+      }}
     />
   )
 }

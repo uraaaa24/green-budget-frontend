@@ -1,5 +1,5 @@
 import SubmitButton from '@/components/common/buttons/submit-button'
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { Form } from '@/components/ui/form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -31,26 +31,41 @@ const TransactionForm = ({ onDialogClose }: TransactionFormProps) => {
 
   const { createTransaction, isLoading, error } = useCreateTransaction()
 
-  const form = useForm({
-    resolver: zodResolver(createTransactionSchema),
-    defaultValues: {
+  const defaultValues = useMemo(
+    () => ({
       date: new Date(),
       category_id: null,
       amount: 0,
       note: '',
       transaction_type: TRANSACTION_TYPES.expense
-    }
+    }),
+    []
+  )
+
+  const form = useForm({
+    resolver: zodResolver(createTransactionSchema),
+    defaultValues
   })
 
-  const onSubmit = async (data: CreateTransaction) => {
-    await createTransaction(data)
+  const watchedTransactionType = form.watch('transaction_type')
 
+  // Reset the form when the transaction type changes
+  useEffect(() => {
+    form.reset({
+      ...defaultValues,
+      transaction_type: watchedTransactionType
+    })
+  }, [watchedTransactionType, form, defaultValues])
+
+  const onSubmit = async (data: CreateTransaction) => {
+    console.log(data)
+    await createTransaction(data)
     onDialogClose()
     router.refresh()
   }
 
   return (
-    <Form {...form}>
+    <Form {...form} key={watchedTransactionType}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <TransactionTypeField />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
