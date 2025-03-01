@@ -1,7 +1,7 @@
 import { useDeleteTransaction } from '@/app/transactions/_hooks/use-delete-transaction'
 import BaseDialog from '@/components/common/dialogs/dialog'
 import { Button } from '@/components/ui/button'
-import { Trash } from 'lucide-react'
+import { Pen, Trash } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -69,10 +69,28 @@ const DeleteAction = ({ id }: ActionsCellProps) => {
   )
 }
 
+const EditAction = () => {
+  const handleClick = () => {
+    alert('今後実装予定')
+  }
+
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={handleClick}
+      className="rounded-lg text-green-500 hover:bg-blue-100 hover:text-green-600"
+    >
+      <Pen className="h-3 w-3" />
+    </Button>
+  )
+}
+
 const ActionsCell = ({ id }: ActionsCellProps) => {
   return (
     <div className="flex items-center space-x-1">
       <DeleteAction id={id} />
+      <EditAction />
     </div>
   )
 }
