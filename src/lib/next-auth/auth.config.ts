@@ -1,16 +1,19 @@
-import { NextAuthConfig } from 'next-auth'
+import { NextAuthConfig, Session } from 'next-auth'
 import Google from 'next-auth/providers/google'
+import { JWT } from 'next-auth/jwt'
 import { generateJWT } from './jwt'
 
-/**
- * NextAuth configuration
- */
+const JWT_MAX_AGE = 1 * 60 * 60
+
 export const config: NextAuthConfig = {
   secret: process.env.AUTH_SECRET,
   session: {
-    strategy: 'jwt'
+    strategy: 'jwt',
+    maxAge: JWT_MAX_AGE
   },
-  providers: [Google],
+  providers: [
+    Google({authorization: { params: { access_type: "offline", prompt: "consent" } },})
+  ],
   basePath: '/api/auth',
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
@@ -22,19 +25,31 @@ export const config: NextAuthConfig = {
 
       return true
     },
-    async jwt({ token, account, user }) {
-      if (account) {
-        token.access_token = account.access_token as string
-        token.jwt = generateJWT(account.access_token, process.env.AUTH_SECRET, user)
+    async jwt({ token, account, profile }) {
+      const newToken: JWT = {
+        ...token,
+        refresh_token: token.refresh_token
       }
-      return token
+
+      if (profile) {
+        if (profile.email) newToken.email = profile.email
+        if (profile.preferred_username) newToken.name = profile.preferred_username
+      }
+
+      if (account) {
+        newToken.refreshToken = account.refresh_token
+      }
+
+      return newToken
     },
     async session({ session, token }) {
-      return {
+      const newSession: Session = {
         ...session,
-        accessToken: token.access_token,
-        jwt: token.jwt
+        refreshToken: token.refreshToken,
+        jwt: await generateJWT(process.env.AUTH_SECRET!, process.env.AUTH_URL!, token)
       }
+
+      return newSession
     }
   }
 }

@@ -3,26 +3,53 @@ import type { JWT } from 'next-auth/jwt'
 
 declare module 'next-auth' {
   interface Session {
-    accessToken: string
-    jwt: string
-    error?: 'RefreshTokenError'
+    /** User Information */
     user: {
+      id?: string
       name?: string | null
       email?: string | null
-      image?: string | null
     }
+    /** Expiration Time */
+    expires: string
+    /** JWT token */
+    jwt: string
+    /** Refresh token of Access Token */
+    refreshToken?: string
+  }
+
+  interface Profile {
+    preferred_username?: string
   }
 }
 
 declare module 'next-auth/jwt' {
   interface JWT {
-    access_token: string
-    jwt: string
-    expires_at: number
-    refresh_token?: string
-    error?: 'RefreshTokenError'
-    name?: string | null
-    email?: string | null
-    picture?: string | null
+    /** User ID */
+    sub: string
+    /** User name */
+    name: string
+    /** User email */
+    email: string
+    /** Refresh token of Access Token */
+    refreshToken: string | undefined
   }
+}
+
+export type JWTPayload = {
+  /** User ID */
+  sub: string
+  /** User name */
+  name: string
+  /** User email */
+  email: string
+  /** Refresh token of Access Token */
+  refreshToken: string | undefined
+  /** Issued At */
+  iat: number
+  /** Expiration Time */
+  exp: number
+  /** Issuer */
+  iss: string
+  /**  Unique ID */
+  jti: string
 }

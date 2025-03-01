@@ -9,12 +9,30 @@ import { Transaction } from '../../_types/transaction'
 import { useDateRange } from '@/contexts/date-range-context'
 import { AmountCell, CategoryCell, DateCell, NoteCell } from './cells'
 import ActionsCell from './cells/actions-cell'
+import { useMemo } from 'react'
 
 type TransactionTableProps = {
   transactions: Transaction[]
 }
 
 const TransactionTable = ({ transactions }: TransactionTableProps) => {
+    // TODO: api取得時に日付の範囲でフィルタリングできるようになったら、この処理は不要
+    const { startDate, endDate } = useDateRange()
+
+    const filteredTransactions = useMemo(() => {
+      const startOfDay = new Date(startDate.setHours(0, 0, 0, 0))
+      const endOfDay = new Date(endDate.setHours(23, 59, 59, 999))
+
+      /**
+       * Filter transactions by date range (startOfDay ~ endOfDay)
+       */
+      const filterTransactionsByDate = (transaction: Transaction) => {
+        const transactionDate = new Date(transaction.date)
+        return transactionDate >= startOfDay && transactionDate <= endOfDay
+      }
+      return transactions.filter(filterTransactionsByDate)
+    }, [transactions, startDate, endDate])
+    
   const columns: ColumnDef<Transaction>[] = [
     {
       accessorKey: 'date',
@@ -58,13 +76,6 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
       }
     }
   ]
-
-  // TODO: api取得時に日付の範囲でフィルタリングできるようになったら、この処理は不要
-  const { startDate, endDate } = useDateRange()
-  const filteredTransactions = (transactions ?? []).filter((transaction) => {
-    const transactionDate = new Date(transaction.date)
-    return transactionDate >= startDate && transactionDate <= endDate
-  })
 
   return (
     <BaseCard

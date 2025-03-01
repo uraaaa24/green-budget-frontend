@@ -1,24 +1,28 @@
-import { User } from 'next-auth'
-import jwt from 'jsonwebtoken'
+import {  SignJWT } from 'jose';
 
-const EXPIRES_IN = 60 * 60
+/**
+ * JWT Algorithm
+ */
+const JWT_ALGORITHM = 'HS256'
+
+const JWT_EXPIRATION_TIME = '1h'
 
 /**
  * Generate JWT
+ * @param secret Secret Key
+ * @param issuer Issuer(URL)
+ * @param payload JWT Payload
+ * @returns JWT
  */
-export const generateJWT = (
-  accessToken: string | undefined,
-  authSecret: string | undefined,
-  userData: User | undefined
-) => {
-  if (!accessToken || !userData || !authSecret) return ''
+import { JWTPayload } from 'jose';
 
-  return jwt.sign(
-    {
-      accessToken,
-      ...userData
-    },
-    authSecret,
-    { expiresIn: EXPIRES_IN }
-  )
+export const generateJWT = async (secret: string, issuer: string, payload: JWTPayload) => {
+  const jwt = await new SignJWT(payload)
+    .setProtectedHeader({ alg: JWT_ALGORITHM }) 
+    .setIssuedAt() 
+    .setIssuer(issuer)
+    .setExpirationTime(JWT_EXPIRATION_TIME)
+    .sign(new TextEncoder().encode(secret))
+
+  return jwt
 }
