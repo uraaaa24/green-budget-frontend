@@ -33,6 +33,7 @@ export const useCreateTransaction = () => {
       if (isError(error)) {
         setError(error)
       }
+      throw error
     } finally {
       setIsLoading(false)
     }

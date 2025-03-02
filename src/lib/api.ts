@@ -17,11 +17,11 @@ export const buildAuthHeaders = (jwt: string | undefined): HeadersInit => {
  * Returns authentication headers for the current session.
  */
 export const getAuthHeaders = async (session: Session | null) => {
-  if (!session) throw new Error('Session not found');
-  if (!session.jwt) throw new Error('JWT token not found');
+  if (!session) throw new Error('Session not found')
+  if (!session.jwt) throw new Error('JWT token not found')
 
-  return buildAuthHeaders(session.jwt);
-};
+  return buildAuthHeaders(session.jwt)
+}
 
 
 /**

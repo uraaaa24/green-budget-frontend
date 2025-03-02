@@ -58,7 +58,6 @@ const TransactionForm = ({ onDialogClose }: TransactionFormProps) => {
   }, [watchedTransactionType, form, defaultValues])
 
   const onSubmit = async (data: CreateTransaction) => {
-    console.log(data)
     await createTransaction(data)
     onDialogClose()
     router.refresh()

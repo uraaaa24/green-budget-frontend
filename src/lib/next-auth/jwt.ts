@@ -1,4 +1,4 @@
-import {  SignJWT } from 'jose';
+import { SignJWT, JWTPayload } from 'jose'
 
 /**
  * JWT Algorithm
@@ -14,12 +14,10 @@ const JWT_EXPIRATION_TIME = '1h'
  * @param payload JWT Payload
  * @returns JWT
  */
-import { JWTPayload } from 'jose';
-
 export const generateJWT = async (secret: string, issuer: string, payload: JWTPayload) => {
   const jwt = await new SignJWT(payload)
-    .setProtectedHeader({ alg: JWT_ALGORITHM }) 
-    .setIssuedAt() 
+    .setProtectedHeader({ alg: JWT_ALGORITHM })
+    .setIssuedAt()
     .setIssuer(issuer)
     .setExpirationTime(JWT_EXPIRATION_TIME)
     .sign(new TextEncoder().encode(secret))

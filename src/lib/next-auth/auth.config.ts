@@ -11,9 +11,7 @@ export const config: NextAuthConfig = {
     strategy: 'jwt',
     maxAge: JWT_MAX_AGE
   },
-  providers: [
-    Google({authorization: { params: { access_type: "offline", prompt: "consent" } },})
-  ],
+  providers: [Google({ authorization: { params: { access_type: 'offline', prompt: 'consent' } } })],
   basePath: '/api/auth',
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
