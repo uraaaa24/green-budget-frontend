@@ -1,19 +1,16 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import Navigation from '@/components/layouts/navigation'
 import { DateRangeProvider } from '@/providers/date-range-provider'
 import { SessionProvider } from 'next-auth/react'
 import { ResponsiveLayoutProvider } from '@/providers/responsive-layout-provider'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin']
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin']
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700']
 })
 
 export const metadata: Metadata = {
@@ -27,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen bg-neutral text-textColors-primary antialiased`}
+        className={`${inter.variable} flex min-h-screen bg-neutral text-textColors-primary antialiased`}
       >
         <SessionProvider>
           <ResponsiveLayoutProvider>
