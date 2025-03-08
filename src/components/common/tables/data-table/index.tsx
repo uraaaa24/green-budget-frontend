@@ -33,7 +33,7 @@ const DataTable = <TData,>({ columns, data }: DataTableProps<TData>) => {
   })
 
   return (
-    <div className="overflow-x-auto rounded-md border border-gray-200">
+    <div className="overflow-x-auto rounded-lg border border-gray-200">
       <Table>
         <DataTableHeader headerGroups={table.getHeaderGroups()} />
         <DataTableBody rows={table.getRowModel().rows} colSpan={columns.length} />

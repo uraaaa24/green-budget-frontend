@@ -21,7 +21,7 @@ const SidebarNavItem = ({ label, href, icon }: SidebarNavItemProps) => {
       <Link
         href={href}
         className={cn(
-          'flex items-center gap-4 rounded-md border-l-4 p-3 outline-none transition-all',
+          'flex items-center gap-4 rounded-lg border-l-4 p-3 outline-none transition-all',
           isActive
             ? 'border-accent bg-primary text-neutral-light'
             : 'border-transparent text-neutral-dark hover:bg-primary/90 focus:ring-2 focus:ring-primary-light'

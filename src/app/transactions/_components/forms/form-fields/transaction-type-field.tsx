@@ -23,7 +23,7 @@ export const TransactionTypeField = () => {
           <Label
             htmlFor="expense"
             className={cn(
-              'cursor-pointer rounded-md border p-2 transition-colors',
+              'cursor-pointer rounded-lg border p-2 transition-colors',
               field.value === 'expense'
                 ? 'border-red-400 bg-red-100 text-red-800'
                 : 'border-gray-300 text-gray-500 hover:border-red-300 hover:bg-red-50 hover:text-red-800/70'
@@ -35,7 +35,7 @@ export const TransactionTypeField = () => {
           <Label
             htmlFor="income"
             className={cn(
-              'cursor-pointer rounded-md border p-2 transition-colors',
+              'cursor-pointer rounded-lg border p-2 transition-colors',
               field.value === 'income'
                 ? 'border-blue-400 bg-blue-100 text-blue-800'
                 : 'border-gray-300 text-gray-600 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-800/70'
