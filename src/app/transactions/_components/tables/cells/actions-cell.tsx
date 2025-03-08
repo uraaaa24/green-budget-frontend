@@ -89,8 +89,8 @@ const EditAction = () => {
 const ActionsCell = ({ id }: ActionsCellProps) => {
   return (
     <div className="flex items-center space-x-1">
-      <DeleteAction id={id} />
       <EditAction />
+      <DeleteAction id={id} />
     </div>
   )
 }
