@@ -20,27 +20,32 @@ import {
 } from './form-fields'
 
 type TransactionFormProps = {
+  defaultValues?: Partial<CreateTransaction>
   onDialogClose: () => void
 }
 
 /**
  * Form to create a new transaction
  */
-const TransactionForm = ({ onDialogClose }: TransactionFormProps) => {
+const TransactionForm = ({
+  defaultValues: _defaultValues,
+  onDialogClose
+}: TransactionFormProps) => {
   const router = useRouter()
 
   const { createTransaction, isLoading, error } = useCreateTransaction()
 
-  const defaultValues = useMemo(
-    () => ({
-      date: new Date(),
-      category_id: null,
-      amount: 0,
-      note: '',
-      transaction_type: TRANSACTION_TYPES.expense
-    }),
-    []
-  )
+  const defaultValues = useMemo(() => {
+    const {
+      date = new Date(),
+      category_id = null,
+      amount = 0,
+      note = '',
+      transaction_type = TRANSACTION_TYPES.expense
+    } = _defaultValues || {}
+
+    return { date, category_id, amount, note, transaction_type }
+  }, [_defaultValues])
 
   const form = useForm({
     resolver: zodResolver(createTransactionSchema),

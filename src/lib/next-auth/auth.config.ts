@@ -3,7 +3,7 @@ import Google from 'next-auth/providers/google'
 import { JWT } from 'next-auth/jwt'
 import { generateJWT } from './jwt'
 
-const JWT_MAX_AGE = 1 * 60 * 60
+const JWT_MAX_AGE = 1 * 60 * 60 // 1 hour
 
 export const config: NextAuthConfig = {
   secret: process.env.AUTH_SECRET,

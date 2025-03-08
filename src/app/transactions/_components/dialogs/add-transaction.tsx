@@ -5,11 +5,16 @@ import { Plus } from 'lucide-react'
 import TransactionForm from '../forms/transaction-form'
 import BaseDialog from '@/components/common/dialogs/dialog'
 import { useState } from 'react'
+import { CreateTransaction } from '../../_schemas/validation'
+
+type AddTransactionDialogProps = {
+  defaultValues?: Partial<CreateTransaction>
+}
 
 /**
  * Dialog to add a new transaction
  */
-const AddTransactionDialog = () => {
+const AddTransactionDialog = ({ defaultValues }: AddTransactionDialogProps) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -28,7 +33,7 @@ const AddTransactionDialog = () => {
           'mx-auto w-full h-full rounded-none md:w-lg md:h-auto md:rounded-lg px-4 md:px-6 overflow-y-auto'
       }}
     >
-      <TransactionForm onDialogClose={() => setOpen(false)} />
+      <TransactionForm defaultValues={defaultValues} onDialogClose={() => setOpen(false)} />
     </BaseDialog>
   )
 }
