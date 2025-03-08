@@ -4,6 +4,12 @@ import TransactionTable from '@/app/transactions/_components/tables/transaction-
 import { Suspense } from 'react'
 import { auth } from '@/lib/next-auth'
 import { getAuthHeaders } from '@/lib/api'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Transactions',
+  description: 'Transactions page'
+}
 
 export default async function Transactions() {
   const session = await auth()
