@@ -9,8 +9,13 @@ import { ColumnDef } from '@tanstack/react-table'
 import DateHeader from './headers/date-header'
 import { Transaction } from '../../_types/transaction'
 import { useDateRange } from '@/contexts/date-range-context'
-import { AmountCell, CategoryCell, DateCell, NoteCell } from './cells'
 import ActionsCell from './cells/actions-cell'
+import SelectCell from './cells/select-cell'
+import SelectHeader from './headers/select-header'
+import { AmountCell } from './cells/amount-cell'
+import { CategoryCell } from './cells/category-cell'
+import { DateCell } from './cells/date-cell'
+import { NoteCell } from './cells/note-cell'
 
 type TransactionTableProps = {
   transactions: Transaction[]
@@ -36,6 +41,11 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
 
   const columns: ColumnDef<Transaction>[] = useMemo(
     () => [
+      {
+        id: 'select',
+        header: ({ table }) => <SelectHeader table={table} />,
+        cell: ({ row }) => <SelectCell row={row} />
+      },
       {
         accessorKey: 'date',
         header: ({ column }) => <DateHeader column={column} />,
