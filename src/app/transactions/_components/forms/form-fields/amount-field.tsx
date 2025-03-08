@@ -17,7 +17,7 @@ export const AmountField = () => {
     <BaseFormField
       name="amount"
       control={control}
-      label="Amount"
+      label="金額"
       required
       renderContent={(field) => (
         <BaseInput

@@ -5,7 +5,7 @@ import React from 'react'
 const SignOutButton = () => {
   return (
     <form action={handleSignOut}>
-      <Button className="w-full">Sign Out</Button>
+      <Button className="w-full">サインアウト</Button>
     </form>
   )
 }

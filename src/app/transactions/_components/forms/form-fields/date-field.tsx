@@ -12,7 +12,7 @@ export const DateField = () => {
     <BaseFormField
       name="date"
       control={control}
-      label="Date"
+      label="日付"
       required
       renderContent={(field) => (
         <DatePicker {...field} selected={field.value} onSelect={field.onChange} />

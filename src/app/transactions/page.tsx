@@ -13,7 +13,7 @@ export default async function Transactions() {
 
   return (
     <section className="space-y-8">
-      <Header label="Transactions" />
+      <Header label="家計簿" />
 
       <div className="space-y-6">
         <Suspense fallback={<div>Loading...</div>}>

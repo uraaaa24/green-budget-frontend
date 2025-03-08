@@ -17,13 +17,12 @@ const AddTransactionDialog = () => {
       trigger={
         <Button>
           <Plus className="h-4 w-4" />
-          Add transaction
+          家計簿に追加
         </Button>
       }
       open={open}
       onOpenChange={() => setOpen(!open)}
-      title="Add Transaction"
-      description="Fill in the form below to add a new transaction"
+      title="家計簿に追加"
       contentProps={{
         className:
           'mx-auto w-full h-full rounded-none md:w-lg md:h-auto md:rounded-lg px-4 md:px-6 overflow-y-auto'

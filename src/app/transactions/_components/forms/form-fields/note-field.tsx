@@ -10,7 +10,7 @@ export const NoteField = () => {
     <BaseFormField
       name="note"
       control={control}
-      label="Note"
+      label="メモ"
       renderContent={(field) => (
         <BaseInput {...field} type="text" placeholder="Additional information" />
       )}

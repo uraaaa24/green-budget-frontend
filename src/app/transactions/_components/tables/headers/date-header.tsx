@@ -15,7 +15,7 @@ const DateHeader = ({ column }: DateHeaderProps) => {
 
   return (
     <BaseButton variant="ghost" onClick={() => column.toggleSorting(direction === 'asc')}>
-      Date
+      日付
       <SortIcon direction={direction} className="ml-2 h-4 w-4" />
     </BaseButton>
   )

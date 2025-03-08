@@ -12,7 +12,7 @@ export const TransactionTypeField = () => {
     <BaseFormField
       name="transaction_type"
       control={control}
-      label="Type"
+      label="種類"
       required
       renderContent={(field) => (
         <RadioGroup
@@ -30,7 +30,7 @@ export const TransactionTypeField = () => {
             )}
           >
             <RadioGroupItem value="expense" id="expense" className="hidden" />
-            Expense
+            支出
           </Label>
           <Label
             htmlFor="income"
@@ -42,7 +42,7 @@ export const TransactionTypeField = () => {
             )}
           >
             <RadioGroupItem value="income" id="income" className="hidden" />
-            Income
+            収入
           </Label>
         </RadioGroup>
       )}

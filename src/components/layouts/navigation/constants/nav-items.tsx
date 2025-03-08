@@ -8,8 +8,8 @@ export type NavItem = {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard', href: '/dashboard', icon: <LayoutDashboard /> },
-  { label: 'Transactions', href: '/transactions', icon: <ArrowRightLeft /> },
-  { label: 'Statistics', href: '/statistics', icon: <ChartLine /> },
-  { label: 'Settings', href: '/settings', icon: <Settings /> }
+  { label: 'ダッシュボード', href: '/dashboard', icon: <LayoutDashboard /> },
+  { label: '家計簿', href: '/transactions', icon: <ArrowRightLeft /> },
+  { label: '統計', href: '/statistics', icon: <ChartLine /> },
+  { label: '設定', href: '/settings', icon: <Settings /> }
 ]

@@ -77,7 +77,7 @@ const TransactionForm = ({ onDialogClose }: TransactionFormProps) => {
         <div className="flex justify-center pt-4">
           {isLoading && <p className="text-gray-500">Saving...</p>}
           {error && <p className="text-red-500">{error.message}</p>}
-          <SubmitButton label="Save" className="w-full" />
+          <SubmitButton label="保存" className="w-full" />
         </div>
       </form>
     </Form>

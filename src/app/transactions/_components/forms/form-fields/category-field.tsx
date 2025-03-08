@@ -28,7 +28,7 @@ export const CategoryField = () => {
     <BaseFormField
       name="category_id"
       control={control}
-      label="Category"
+      label="カテゴリー"
       renderContent={(field) => {
         const { value, onChange, ...rest } = field
         return (

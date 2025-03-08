@@ -53,12 +53,12 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
       },
       {
         accessorKey: 'category',
-        header: 'Category',
+        header: 'カテゴリー',
         cell: ({ row }) => <CategoryCell category={row.original.category} />
       },
       {
         accessorKey: 'amount',
-        header: 'Amount',
+        header: '金額',
         cell: ({ row }) => {
           const { amount, transaction_type: transactionType } = row.original
           return <AmountCell transactionType={transactionType} amount={amount} />
@@ -66,12 +66,12 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
       },
       {
         accessorKey: 'note',
-        header: 'Note',
+        header: 'メモ',
         cell: ({ row }) => <NoteCell note={row.original.note} />
       },
       {
         id: 'actions',
-        header: 'Actions',
+        header: 'アクション',
         cell: ({ row }) => <ActionsCell id={row.original.id} />
       }
     ],
@@ -82,7 +82,7 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
     <BaseCard
       header={
         <div className="flex items-center justify-between">
-          <CardTitle className="text-2xl">Transaction history</CardTitle>
+          <CardTitle className="text-2xl">家計簿明細</CardTitle>
           <AddTransactionDialog />
         </div>
       }
