@@ -16,23 +16,23 @@ type TransactionTableProps = {
 }
 
 const TransactionTable = ({ transactions }: TransactionTableProps) => {
-    // TODO: api取得時に日付の範囲でフィルタリングできるようになったら、この処理は不要
-    const { startDate, endDate } = useDateRange()
+  // TODO: api取得時に日付の範囲でフィルタリングできるようになったら、この処理は不要
+  const { startDate, endDate } = useDateRange()
 
-    const filteredTransactions = useMemo(() => {
-      const startOfDay = new Date(startDate.setHours(0, 0, 0, 0))
-      const endOfDay = new Date(endDate.setHours(23, 59, 59, 999))
+  const filteredTransactions = useMemo(() => {
+    const startOfDay = new Date(startDate.setHours(0, 0, 0, 0))
+    const endOfDay = new Date(endDate.setHours(23, 59, 59, 999))
 
-      /**
-       * Filter transactions by date range (startOfDay ~ endOfDay)
-       */
-      const filterTransactionsByDate = (transaction: Transaction) => {
-        const transactionDate = new Date(transaction.date)
-        return transactionDate >= startOfDay && transactionDate <= endOfDay
-      }
-      return transactions.filter(filterTransactionsByDate)
-    }, [transactions, startDate, endDate])
-    
+    /**
+     * Filter transactions by date range (startOfDay ~ endOfDay)
+     */
+    const filterTransactionsByDate = (transaction: Transaction) => {
+      const transactionDate = new Date(transaction.date)
+      return transactionDate >= startOfDay && transactionDate <= endOfDay
+    }
+    return transactions.filter(filterTransactionsByDate)
+  }, [transactions, startDate, endDate])
+
   const columns: ColumnDef<Transaction>[] = [
     {
       accessorKey: 'date',
