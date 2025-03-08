@@ -29,7 +29,6 @@ export const CategoryField = () => {
       name="category_id"
       control={control}
       label="Category"
-      required
       renderContent={(field) => {
         const { value, onChange, ...rest } = field
         return (

@@ -45,7 +45,7 @@ const BaseDialog = ({
           <DialogTitle className="text-2xl">{title}</DialogTitle>
           {description && <DialogDescription className="text-sm">{description}</DialogDescription>}
         </DialogHeader>
-        {children && <div className="my-4 grow">{children}</div>} {/* growを追加 */}
+        {children && <div className="my-4 w-full grow">{children}</div>}
         {footer && <DialogFooter>{footer}</DialogFooter>}
       </DialogContent>
     </Dialog>

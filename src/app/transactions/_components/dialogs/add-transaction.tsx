@@ -25,7 +25,8 @@ const AddTransactionDialog = () => {
       title="Add Transaction"
       description="Fill in the form below to add a new transaction"
       contentProps={{
-        className: 'md:w-auto w-full h-full md:h-auto'
+        className:
+          'mx-auto w-full h-full rounded-none md:w-lg md:h-auto md:rounded-lg px-4 md:px-6 overflow-y-auto'
       }}
     >
       <TransactionForm onDialogClose={() => setOpen(false)} />
